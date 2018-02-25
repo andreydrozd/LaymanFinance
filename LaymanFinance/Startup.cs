@@ -28,7 +28,18 @@ namespace LaymanFinance
             services.AddAntiforgery();
             services.AddSession();
 
+            //This will read the appsettings.json into an object which I can use throughout my app:
+            services.AddOptions();
 
+            services.AddDbContext<IdentityDbContext>(options =>
+                //options.UseInMemoryDatabase("Identities"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    sqlOptions => sqlOptions.MigrationsAssembly(this.GetType().Assembly.FullName))
+                );
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddDefaultTokenProviders();
 
         }
 

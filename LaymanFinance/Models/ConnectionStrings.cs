@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace LaymanFinance.Models
 {
-    public class OutlayEntryModels
+    public class ConnectionStrings
     {
-        public OutlayModel Outlay { get; set; }
-        public CategoryModel[] Categories { get; set; }
+        public string DefaultConnection { get; set; }
     }
 }

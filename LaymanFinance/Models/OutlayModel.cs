@@ -9,6 +9,7 @@ namespace LaymanFinance.Models
     {
         public int ID { get; set; }
 
+
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "When was the outlay?")]
         public DateTime? Date { get; set; }
 
@@ -18,7 +19,7 @@ namespace LaymanFinance.Models
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Who took thy money?")]
         public string Payee { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Write a little somethin'.")]
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "We got the Who,What,When. Add a Where or Why.")]
         public string Memo { get; set; }
 
         public CategoryModel Category { get; set; }
