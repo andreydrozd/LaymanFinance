@@ -29,6 +29,7 @@ namespace LaymanFinance
             services.AddSession();
 
             //This will read the appsettings.json into an object which I can use throughout my app:
+            services.Configure<Models.ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.AddOptions();
 
             services.AddDbContext<IdentityDbContext>(options =>
@@ -40,7 +41,6 @@ namespace LaymanFinance
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddDefaultTokenProviders();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
