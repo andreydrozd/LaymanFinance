@@ -44,14 +44,14 @@ namespace LaymanFinance.Controllers
 
                 using (var reader = command.ExecuteReader())
                 {
-                    var DateColumn = reader.GetOrdinal("Date");
+                    var DateOccurredColumn = reader.GetOrdinal("Date");
                     var AmountColumn = reader.GetOrdinal("Amount");
                     var PayeeColumn = reader.GetOrdinal("Payee");
                     var MemoColumn = reader.GetOrdinal("Memo");
                     var CategoryColumn = reader.GetOrdinal("Name");
                     while (reader.Read())
                     {
-                        model.Date = reader.GetDateTime(DateColumn);
+                        model.DateOccurred = reader.GetDateTime(DateOccurredColumn);
                         model.Amount = reader.GetDecimal(AmountColumn);
                         model.Payee = reader.GetString(PayeeColumn);
                         model.Memo = reader.GetString(MemoColumn);

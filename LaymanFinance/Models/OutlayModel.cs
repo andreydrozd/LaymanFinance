@@ -9,9 +9,8 @@ namespace LaymanFinance.Models
     {
         public int ID { get; set; }
 
-
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "When was the outlay?")]
-        public DateTime? Date { get; set; }
+        public DateTime? DateOccurred { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "You didn't say how much the outlay was.")]
         public decimal Amount { get; set; }
