@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using LaymanFinance.Models;
 
 namespace LaymanFinance
 {
@@ -32,19 +33,18 @@ namespace LaymanFinance
             services.Configure<Models.ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.AddOptions();
 
-            services.AddDbContext<IdentityDbContext>(options =>
-                //options.UseInMemoryDatabase("Identities"));
+            services.AddDbContext<AndreyTestContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                    sqlOptions => sqlOptions.MigrationsAssembly(this.GetType().Assembly.FullName))
-                );
+                sqlOptions => sqlOptions.MigrationsAssembly(this.GetType().Assembly.FullName))
+            );
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityDbContext>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AndreyTestContext>()
                 .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AndreyTestContext context)
         {
             if (env.IsDevelopment())
             {
@@ -66,6 +66,8 @@ namespace LaymanFinance
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DbInitializer.Initialize(context);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace LaymanFinance.Models
         public double BudgetedAmount { get; set; }
         public double ActivityAmount { get; set; }
         public double AvailableAmount { get; set; }
-        public OutlayModel[] Outlays { get; set; }
+        public Outlay[] Outlays { get; set; }
+        public InflowModel[] Inflows { get; set; }
     }
 }

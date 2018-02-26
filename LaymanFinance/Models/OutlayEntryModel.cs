@@ -7,7 +7,7 @@ namespace LaymanFinance.Models
 {
     public class OutlayEntryModel
     {
-        public OutlayModel Outlay { get; set; }
+        public Outlay Outlay { get; set; }
         public CategoryModel[] Categories { get; set; }
     }
 }
