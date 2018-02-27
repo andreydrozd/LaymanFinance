@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace LaymanFinance.Models
 {
-    public class OutlayEntryModel
+    public class OutlayEntry
     {
+        public int ID { get; set; }
         public Outlay Outlay { get; set; }
-        public CategoryModel[] Categories { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -11,5 +11,9 @@ namespace LaymanFinance.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FavoriteColor { get; set; }
+
+        // These are the one-to-many relationships of Category
+        // public ICollection<> { get; set; }
+        // public ICollection<> { get; set; }
     }
 }

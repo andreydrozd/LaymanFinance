@@ -16,6 +16,7 @@ namespace LaymanFinance.Models
         public string Name { get; set; }
         public decimal BudgetedAmount { get; set; }
 
+        // These are the one-to-many relationships of Category
         public ICollection<Inflow> Inflow { get; set; }
         public ICollection<Outlay> Outlay { get; set; }
     }

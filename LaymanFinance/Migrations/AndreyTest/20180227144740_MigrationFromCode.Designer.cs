@@ -11,9 +11,10 @@ using System;
 namespace LaymanFinance.Migrations.AndreyTest
 {
     [DbContext(typeof(AndreyTestContext))]
-    partial class AndreyTestContextModelSnapshot : ModelSnapshot
+    [Migration("20180227144740_MigrationFromCode")]
+    partial class MigrationFromCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,24 +199,6 @@ namespace LaymanFinance.Migrations.AndreyTest
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Outlay");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.OutlayEntry", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CategoryId");
-
-                    b.Property<int?>("OutlayId");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("OutlayId");
-
-                    b.ToTable("OutlayEntry");
                 });
 
             modelBuilder.Entity("LaymanFinance.Models.Promo", b =>
@@ -462,17 +445,6 @@ namespace LaymanFinance.Migrations.AndreyTest
                         .WithMany("Outlay")
                         .HasForeignKey("CategoryId")
                         .HasConstraintName("FK_Outlay_Category");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.OutlayEntry", b =>
-                {
-                    b.HasOne("LaymanFinance.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("LaymanFinance.Models.Outlay", "Outlay")
-                        .WithMany()
-                        .HasForeignKey("OutlayId");
                 });
 
             modelBuilder.Entity("LaymanFinance.Models.ServiceDetail", b =>

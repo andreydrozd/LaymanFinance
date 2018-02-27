@@ -17,6 +17,8 @@ namespace LaymanFinance.Models
         public string DescriptionOne { get; set; }
         public string DescriptionTwo { get; set; }
         public string DescriptionThree { get; set; }
+        public string DescriptionFour { get; set; }
+
 
         public ICollection<ServiceDetail> ServiceDetail { get; set; }
         public ICollection<Testimonial> Testimonial { get; set; }

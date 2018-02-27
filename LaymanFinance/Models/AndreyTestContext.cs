@@ -25,6 +25,7 @@ namespace LaymanFinance.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
         public virtual DbSet<Testimonial> Testimonial { get; set; }
+        public virtual DbSet<OutlayEntry> OutlayEntry { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -124,11 +125,13 @@ namespace LaymanFinance.Models
 
                 entity.Property(e => e.DescriptionOne)
                     .IsRequired()
-                    .HasMaxLength(160);
+                    .HasMaxLength(280);
 
-                entity.Property(e => e.DescriptionThree).HasMaxLength(160);
+                entity.Property(e => e.DescriptionThree).HasMaxLength(280);
 
-                entity.Property(e => e.DescriptionTwo).HasMaxLength(160);
+                entity.Property(e => e.DescriptionTwo).HasMaxLength(280);
+
+                entity.Property(e => e.DescriptionFour).HasMaxLength(280);
 
                 entity.Property(e => e.Name)
                     .IsRequired()
