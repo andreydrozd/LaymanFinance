@@ -1,13 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    Layout = null;
 }
-
-<h2>Login</h2>
-<div asp-validation-summary="All"></div>
-<form asp-action="login" asp-controller="account" method="post">
-    <label>Username</label>
-    <input type="text" name="username" required />
-    <label>Password</label>
-    <input type="password" name="password" required />
-    <input type="submit" value="Login" />
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Layman Finance</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body id="home-bg">
+    <div asp-validation-summary="All"></div>
+    <div id="user-form">
+        <form asp-action="login" asp-controller="account" method="post" class="login-register">
+            <label>Username</label>
+            <input type="text" name="username" required />
+            <label>Password</label>
+            <input type="password" name="password" required />
+            <input type="submit" value="Login" class="btn btn-primary register-submit-btn" />
+        </form>
+    </div>
+</body>
+</html>

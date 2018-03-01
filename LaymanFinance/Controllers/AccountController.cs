@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using LaymanFinance.Models;
 
 namespace LaymanFinance.Controllers
 {
     public class AccountController : Controller
     {
         //Using Microsoft.AspNetCore.Identity
-        private SignInManager<IdentityUser> _signInManager;
-        public AccountController(SignInManager<IdentityUser> signInManager)
+        private SignInManager<ApplicationUser> _signInManager;
+        public AccountController(SignInManager<ApplicationUser> signInManager)
         {
             this._signInManager = signInManager;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             return Content("You can only see this if you're signed in!");
@@ -29,6 +29,7 @@ namespace LaymanFinance.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -36,11 +37,12 @@ namespace LaymanFinance.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public IActionResult Register(string username, string password)
         {
             if (ModelState.IsValid)
             {
-                IdentityUser newUser = new IdentityUser(username);
+                ApplicationUser newUser = new ApplicationUser { UserName = username };
 
                 var userResult = _signInManager.UserManager.CreateAsync(newUser).Result;
 
@@ -50,7 +52,7 @@ namespace LaymanFinance.Controllers
                     if (passwordResult.Succeeded)
                     {
                         _signInManager.SignInAsync(newUser, isPersistent: false).Wait();
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("AuthorizedHome", "Home");
                     }
                     else
                     {
@@ -72,6 +74,7 @@ namespace LaymanFinance.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
@@ -79,6 +82,7 @@ namespace LaymanFinance.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public IActionResult Login(string username, string password)
         {
             if (ModelState.IsValid)
@@ -86,7 +90,7 @@ namespace LaymanFinance.Controllers
                 var result = _signInManager.PasswordSignInAsync(username, password, isPersistent: false, lockoutOnFailure: false).Result;
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("AuthorizedHome", "Home");
                 }
                 else
                 {

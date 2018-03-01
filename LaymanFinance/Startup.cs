@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using LaymanFinance.Models;
 
 namespace LaymanFinance
@@ -25,7 +26,13 @@ namespace LaymanFinance
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
+            });
+
             services.AddAntiforgery();
             services.AddSession();
 

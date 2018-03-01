@@ -8,6 +8,7 @@ using LaymanFinance.Models;
 
 namespace LaymanFinance.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.AllowAnonymous]
     public class HomeController : Controller
     {
         public IActionResult Index()
@@ -15,17 +16,8 @@ namespace LaymanFinance.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult AuthorizedHome()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
