@@ -20,8 +20,9 @@ namespace LaymanFinance.Controllers
 
         public IActionResult Index(int id)
         {
-            var outlay = _context.Outlay.Include(x => x.Category).Single(x => x.Id == id);
-            return View(outlay);
+            //TODO - Change so that it returns an array of outlays instead of a single one.
+            var outlays = _context.Outlay.Include(x => x.Category).Single(x => x.Id == id);
+            return View(outlays);
         }
     }
 }

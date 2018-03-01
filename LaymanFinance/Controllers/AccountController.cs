@@ -20,13 +20,13 @@ namespace LaymanFinance.Controllers
 
         public IActionResult Index()
         {
-            return Content("You can only see this if you're signed in!");
+            return View();
         }
 
         public IActionResult Logout()
         {
             _signInManager.SignOutAsync().Wait();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         [AllowAnonymous]
@@ -52,7 +52,7 @@ namespace LaymanFinance.Controllers
                     if (passwordResult.Succeeded)
                     {
                         _signInManager.SignInAsync(newUser, isPersistent: false).Wait();
-                        return RedirectToAction("AuthorizedHome", "Home");
+                        return RedirectToAction("Index", "Account");
                     }
                     else
                     {
@@ -90,7 +90,7 @@ namespace LaymanFinance.Controllers
                 var result = _signInManager.PasswordSignInAsync(username, password, isPersistent: false, lockoutOnFailure: false).Result;
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("AuthorizedHome", "Home");
+                    return RedirectToAction("Index", "Account");
                 }
                 else
                 {
