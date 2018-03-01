@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using LaymanFinance.Models;
 using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace LaymanFinance.Controllers
 {
@@ -19,7 +20,7 @@ namespace LaymanFinance.Controllers
 
         public IActionResult Index(int id)
         {
-            var outlay = _context.Outlay.Find(id);
+            var outlay = _context.Outlay.Include(x => x.Category).Single(x => x.Id == id);
             return View(outlay);
         }
     }

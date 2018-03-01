@@ -98,6 +98,23 @@ namespace LaymanFinance
                 //Finally, SaveChanges on the Context to commit these to the database
                 context.SaveChanges();
             }
+
+            if (!context.Outlay.Any())
+            {
+                context.Outlay.Add(new Outlay
+                {
+                    Amount = 10,
+                    CategoryId = 6,
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    DateOccurred = DateTime.Now,
+                    Memo = "Saturday is for the boys",
+                    Payee = "Panda Express"
+                });
+
+                //Finally, SaveChanges on the Context to commit these to the database
+                context.SaveChanges();
+            }
         }
     }
 }
