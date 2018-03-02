@@ -18,11 +18,27 @@ namespace LaymanFinance.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index()
         {
-            //TODO - Change so that it returns an array of outlays instead of a single one.
-            var outlays = _context.Outlay.Include(x => x.Category).Single(x => x.Id == id);
+            var outlays = _context.Outlay.Include(x => x.Category);
             return View(outlays);
+        }
+
+        public IActionResult EnterOutlay(OutlayEntryViewModel)
+        {
+            return View(OutlayEntryViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EnterOutlay()
+        {
+            var outlayEntryViewModel = _context.Select(x => new OutlayEntryViewModel
+            {
+                
+            });
+
+            return(outlayEntryViewModel);
         }
     }
 }

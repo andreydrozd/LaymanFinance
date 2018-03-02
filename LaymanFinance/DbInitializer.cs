@@ -112,6 +112,28 @@ namespace LaymanFinance
                     Payee = "Panda Express"
                 });
 
+                context.Outlay.Add(new Outlay
+                {
+                    Amount = 20,
+                    CategoryId = 2,
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    DateOccurred = DateTime.Now,
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    Payee = "Whole Foods"
+                });
+
+                context.Outlay.Add(new Outlay
+                {
+                    Amount = 30,
+                    CategoryId = 3,
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    DateOccurred = DateTime.Now,
+                    Memo = "regular fill-up",
+                    Payee = "Shell"
+                });
+
                 //Finally, SaveChanges on the Context to commit these to the database
                 context.SaveChanges();
             }

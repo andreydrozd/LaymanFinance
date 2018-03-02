@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace LaymanFinance.Models
 {
-    public partial class AndreyTestContext : Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext<ApplicationUser>
+    public partial class AndreyTestContext : IdentityDbContext<ApplicationUser>
     {
 
         public AndreyTestContext() : base()
@@ -25,7 +26,7 @@ namespace LaymanFinance.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
         public virtual DbSet<Testimonial> Testimonial { get; set; }
-        public virtual DbSet<OutlayEntry> OutlayEntry { get; set; }
+        public virtual DbSet<OutlayEntryViewModel> OutlayEntryViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

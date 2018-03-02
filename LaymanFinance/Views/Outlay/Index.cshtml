@@ -1,4 +1,4 @@
-﻿@model LaymanFinance.Models.Outlay
+﻿@model IEnumerable<LaymanFinance.Models.Outlay>
 @{
     ViewData["Title"] = "Outlay";
 }
@@ -22,24 +22,27 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-2">
-        <p>@Model.DateOccurred</p>
+@foreach (var outlay in Model)
+{
+    <div class="row">
+        <div class="col-2">
+            <p>@outlay.DateOccurred</p>
+        </div>
+        <div class="col-2">
+            <p>@outlay.Amount.ToString("c")</p>
+            @*
+                This is done when the model property is nullable.
+                <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
+            *@
+        </div>
+        <div class="col-2">
+            <p>@outlay.Payee</p>
+        </div>
+        <div class="col-4">
+            <p>@outlay.Memo</p>
+        </div>
+        <div class="col-2">
+            <p>@outlay.Category.Name</p>
+        </div>
     </div>
-    <div class="col-2">
-        <p>@Model.Amount.ToString("c")</p>
-        @*
-            This is done when the model property is nullable.
-            <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
-        *@
-    </div>
-    <div class="col-2">
-        <p>@Model.Payee</p>
-    </div>
-    <div class="col-4">
-        <p>@Model.Memo</p>
-    </div>
-    <div class="col-2">
-        <p>@Model.Category.Name</p>
-    </div>
-</div>
+}
