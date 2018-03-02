@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LaymanFinance.Models
 {
-    // This adds extra columns to the User table
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser ()
@@ -15,6 +14,7 @@ namespace LaymanFinance.Models
             Inflow = new HashSet<Inflow>();
         }
 
+        // This adds extra columns to the User table
         public string FirstName { get; set; }
         public string LastName { get; set; }
 

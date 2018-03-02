@@ -29,15 +29,7 @@
                 <li class="nav-item"><a asp-area="" asp-controller="Outlay" asp-action="EnterOutlay" class="nav-link">Enter an Outlay</a></li>
                 <li class="nav-item"><a asp-area="" asp-controller="Inflow" asp-action="Index" class="nav-link">Inflows</a></li>
                 <li class="nav-item"><a asp-area="" asp-controller="Inflow" asp-action="EnterInflow" class="nav-link">Enter an Inflow</a></li>
-
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Logout" class="nav-link">Logout as @User.Identity.Name</a></li>
-                }
-                else
-                {
-                    <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Login" class="nav-link">Login</a></li>
-                }
+                <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Logout" class="nav-link">Logout as @User.Identity.Name</a></li>
             </ul>
         </div>
     </nav>
