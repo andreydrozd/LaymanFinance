@@ -9,12 +9,20 @@ namespace LaymanFinance.Models
     // This adds extra columns to the User table
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser ()
+        {
+            Outlay = new HashSet<Outlay>();
+            Inflow = new HashSet<Inflow>();
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FavoriteColor { get; set; }
 
-        // These are the one-to-many relationships of Category
-        // public ICollection<> { get; set; }
-        // public ICollection<> { get; set; }
+        public ICollection<Outlay> Outlay { get; set; }
+        public ICollection<Inflow> Inflow { get; set; }
+
+        // TODO: Connect users to their respective services.
+        // public ICollection<ServiceDetail> ServiceDetail { get; set; }
+        // public ICollection<Order> Order { get; set; }
     }
 }

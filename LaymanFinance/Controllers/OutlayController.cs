@@ -20,25 +20,30 @@ namespace LaymanFinance.Controllers
 
         public IActionResult Index()
         {
-            var outlays = _context.Outlay.Include(x => x.Category);
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+            var outlays = _context.Users.Include(x => x.Outlay).ThenInclude(x => x.Category).First(x => x.Id == userId).Outlay;
             return View(outlays);
         }
 
-        public IActionResult EnterOutlay(OutlayEntryViewModel)
+        public IActionResult EnterOutlay()
         {
-            return View(OutlayEntryViewModel);
+            OutlayEntryViewModel outlayEntryViewModel = new OutlayEntryViewModel();
+            outlayEntryViewModel.Categories = _context.Category.Select(x => x.Name).ToArray();
+            return View(outlayEntryViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EnterOutlay()
+        public IActionResult EnterOutlay(OutlayEntryViewModel model)
         {
-            var outlayEntryViewModel = _context.Select(x => new OutlayEntryViewModel
-            {
-                
-            });
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+            var outlay = model.Outlay;
+            outlay.ApplicationUser = _context.Users.Find(userId);
+            outlay.Category = _context.Category.First(x => x.Name == model.selectedCategory);
+            _context.Outlay.Add(outlay);
+            _context.SaveChanges();
 
-            return(outlayEntryViewModel);
+            return RedirectToAction("Index");
         }
     }
 }

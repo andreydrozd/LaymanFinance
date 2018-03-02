@@ -7,6 +7,7 @@ namespace LaymanFinance.Models
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }
+        public string UserId { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "When was the outlay?")]
         public DateTime DateOccurred { get; set; }
@@ -23,5 +24,6 @@ namespace LaymanFinance.Models
         public string Memo { get; set; }
 
         public Category Category { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

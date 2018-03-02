@@ -26,7 +26,7 @@ namespace LaymanFinance.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
         public virtual DbSet<Testimonial> Testimonial { get; set; }
-        public virtual DbSet<OutlayEntryViewModel> OutlayEntryViewModel { get; set; }
+        //public virtual DbSet<OutlayEntryViewModel> OutlayEntryViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -107,6 +107,11 @@ namespace LaymanFinance.Models
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Outlay_Category");
+                entity.HasOne(d => d.ApplicationUser)
+                    .WithMany(p => p.Outlay)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Outlay_User");
             });
 
             modelBuilder.Entity<Promo>(entity =>

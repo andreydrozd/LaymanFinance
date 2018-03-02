@@ -8,6 +8,7 @@ namespace LaymanFinance.Models
     public class OutlayEntryViewModel
     {
         public Outlay Outlay { get; set; }
-        public Category Category { get; set; }
+        public string selectedCategory { get; set; }
+        public string[] Categories { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model LaymanFinance.Models.Outlay
+﻿@model LaymanFinance.Models.OutlayEntryViewModel
 @{
     ViewData["Title"] = "Outlay Entry Page";
 }
@@ -37,11 +37,11 @@
             </div>
             <div>
                 <label>Category</label>
-                <select name="outlay.Category.ID" class="form-control" required>
+                <select name="selectedCategory" class="form-control" required>
                     <option value="">Select a Category</option>
                     @foreach (var cat in Model.Categories)
                     {
-                        <option value="@cat.ID">@cat.Name</option>
+                        <option value="@cat">@cat</option>
                     }
                 </select>
                 <span class="invalid-feedback">Choose a category</span>
