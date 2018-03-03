@@ -11,14 +11,15 @@ using System.Security.Claims;
 
 namespace LaymanFinance.Controllers
 {
-    public class OutlayController : Controller
+    public class OutlaysController : Controller
     {
         private AndreyTestContext _context;
-        public OutlayController(AndreyTestContext context)
+        public OutlaysController(AndreyTestContext context)
         {
             _context = context;
         }
 
+        // GET: Outlays
         public IActionResult Index()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -26,6 +27,7 @@ namespace LaymanFinance.Controllers
             return View(outlays);
         }
 
+        // GET: Outlays/EnterOutlay
         public IActionResult EnterOutlay()
         {
             OutlayEntryViewModel outlayEntryViewModel = new OutlayEntryViewModel();
@@ -33,6 +35,7 @@ namespace LaymanFinance.Controllers
             return View(outlayEntryViewModel);
         }
 
+        // POST: Outlays/EnterOutlay
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EnterOutlay(OutlayEntryViewModel model)

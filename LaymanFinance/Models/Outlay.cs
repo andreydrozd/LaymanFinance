@@ -21,7 +21,7 @@ namespace LaymanFinance.Models
         [Required(ErrorMessage = "Who took thy money?")]
         public string Payee { get; set; }
 
-        [Required(ErrorMessage = "We got the Who,What,When. Add a Where or Why.")]
+        [Required(ErrorMessage = "We got the Who, What, When. Add a Where or Why.")]
         public string Memo { get; set; }
 
         public Category Category { get; set; }

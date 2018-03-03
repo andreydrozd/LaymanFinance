@@ -6,23 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaymanFinance.Models;
+using System.Security.Claims;
 
 namespace LaymanFinance.Controllers
 {
     public class InflowsController : Controller
     {
-        private readonly AndreyTestContext _context;
-
+        private AndreyTestContext _context;
         public InflowsController(AndreyTestContext context)
         {
             _context = context;
         }
 
         // GET: Inflows
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var andreyTestContext = _context.Inflow.Include(i => i.Category);
-            return View(await andreyTestContext.ToListAsync());
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var inflows = _context.Users.Include(x => x.Inflow).ThenInclude(x => x.Category).First(x => x.Id == userId).Inflow;
+            return View(inflows);
         }
 
         // GET: Inflows/Details/5

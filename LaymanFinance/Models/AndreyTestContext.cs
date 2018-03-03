@@ -61,6 +61,12 @@ namespace LaymanFinance.Models
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Inflow_Category");
+
+                entity.HasOne(d => d.ApplicationUser)
+                    .WithMany(p => p.Inflow)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Inflow_User");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -107,6 +113,7 @@ namespace LaymanFinance.Models
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Outlay_Category");
+
                 entity.HasOne(d => d.ApplicationUser)
                     .WithMany(p => p.Outlay)
                     .HasForeignKey(d => d.UserId)

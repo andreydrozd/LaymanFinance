@@ -11,9 +11,10 @@ using System;
 namespace LaymanFinance.Migrations.AndreyTest
 {
     [DbContext(typeof(AndreyTestContext))]
-    partial class AndreyTestContextModelSnapshot : ModelSnapshot
+    [Migration("20180303193659_InflowUser")]
+    partial class InflowUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
