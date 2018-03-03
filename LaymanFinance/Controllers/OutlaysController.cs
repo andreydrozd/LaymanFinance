@@ -43,7 +43,7 @@ namespace LaymanFinance.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var outlay = model.Outlay;
             outlay.ApplicationUser = _context.Users.Find(userId);
-            outlay.Category = _context.Category.First(x => x.Name == model.selectedCategory);
+            outlay.Category = _context.Category.First(x => x.Name == model.SelectedCategory);
             _context.Outlay.Add(outlay);
             _context.SaveChanges();
 

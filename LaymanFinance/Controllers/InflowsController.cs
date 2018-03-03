@@ -26,48 +26,47 @@ namespace LaymanFinance.Controllers
             return View(inflows);
         }
 
-        // GET: Inflows/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Inflows/EnterInflow
+        public IActionResult EnterInflow()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var inflow = await _context.Inflow
-                .Include(i => i.Category)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (inflow == null)
-            {
-                return NotFound();
-            }
-
-            return View(inflow);
+            InflowEntryViewModel inflowEntryViewModel = new InflowEntryViewModel();
+            inflowEntryViewModel.Categories = _context.Category.Select(x => x.Name).ToArray();
+            return View(inflowEntryViewModel);
         }
 
-        // GET: Inflows/Create
-        public IActionResult Create()
-        {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
-            return View();
-        }
-
-        // POST: Inflows/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Inflows/EnterInflow
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryId,DateOccurred,DateEntered,DateModified,Amount,Payor,Memo")] Inflow inflow)
+        public IActionResult EnterInflow(InflowEntryViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(inflow);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", inflow.CategoryId);
-            return View(inflow);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var inflow = model.Inflow;
+            inflow.ApplicationUser = _context.Users.Find(userId);
+            inflow.Category = _context.Category.First(x => x.Name == model.SelectedCategory);
+            _context.Inflow.Add(inflow);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Inflows/Edit/5
         public async Task<IActionResult> Edit(int? id)

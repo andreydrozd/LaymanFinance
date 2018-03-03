@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LaymanFinance.Models
 {
-    public class OutlayEntryViewModel
+    public class InflowEntryViewModel
     {
-        public Outlay Outlay { get; set; }
+        public Inflow Inflow { get; set; }
         public string SelectedCategory { get; set; }
         public string[] Categories { get; set; }
     }

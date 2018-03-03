@@ -137,6 +137,45 @@ namespace LaymanFinance
                 //Finally, SaveChanges on the Context to commit these to the database
                 context.SaveChanges();
             }
+
+            if (!context.Inflow.Any())
+            {
+                context.Inflow.Add(new Inflow
+                {
+                    Amount= 20,
+                    CategoryId = 3,
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    DateOccurred = DateTime.Now,
+                    Memo = "won a bet on Bayern - Barcelona CL game.",
+                    Payor = "Broseidon"
+                });
+
+                context.Inflow.Add(new Inflow
+                {
+                    Amount = 50,
+                    CategoryId = 2,
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    DateOccurred = DateTime.Now,
+                    Memo = "Received Lyft payout for last week of February",
+                    Payor = "Lyft"
+                });
+
+                context.Inflow.Add(new Inflow
+                {
+                    Amount = 3000,
+                    CategoryId = 1,
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    DateOccurred = DateTime.Now,
+                    Memo = "Second half of February check",
+                    Payor = "Best Devs Inc."
+                });
+
+                //Finally, SaveChanges on the Context to commit these to the database
+                context.SaveChanges();
+            }
         }
     }
 }
