@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LaymanFinance.Models
 {
@@ -9,18 +10,18 @@ namespace LaymanFinance.Models
         public int CategoryId { get; set; }
         public string UserId { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "When was the outlay?")]
+        [Required(ErrorMessage = "When was the outlay?")]
         public DateTime DateOccurred { get; set; }
         public DateTime DateEntered { get; set; }
         public DateTime? DateModified { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "You didn't say how much the outlay was.")]
+        [Required(ErrorMessage = "You didn't say how much the outlay was.")]
         public decimal Amount { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Who took thy money?")]
+        [Required(ErrorMessage = "Who took thy money?")]
         public string Payee { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "We got the Who,What,When. Add a Where or Why.")]
+        [Required(ErrorMessage = "We got the Who,What,When. Add a Where or Why.")]
         public string Memo { get; set; }
 
         public Category Category { get; set; }

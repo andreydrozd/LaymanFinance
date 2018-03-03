@@ -18,22 +18,22 @@
         <div>
             <label for="outlay.DateOccurred">Date</label>
             <input class="form-control" type="date" name="outlay.DateOccurred" value="" required />
-            <span class="invalid-feedback">Enter a date.</span>
+            <span class="invalid-feedback">When was the outlay?</span>
         </div>
         <div>
             <label for="outlay.Amount">Amount</label>
             <input class="form-control" type="number" name="outlay.Amount" value="" required />
-            <span class="invalid-feedback">Enter an amount.</span>
+            <span class="invalid-feedback">How much was the outlay?</span>
         </div>
         <div>
             <label for="outlay.Description">Payee</label>
             <input class="form-control" type="text" name="outlay.Payee" value="" required />
-            <span class="invalid-feedback">Enter who got your money.</span>
+            <span class="invalid-feedback">Who took thy money?</span>
         </div>
         <div>
             <label for="outlay.Description">Memo</label>
             <input class="form-control" type="text" name="outlay.Memo" value="" required />
-            <span class="invalid-feedback">Give me some details.</span>
+            <span class="invalid-feedback">Give me some details for posterity's sake.</span>
         </div>
         <div>
             <label>Category</label>
@@ -51,7 +51,7 @@
 </div>
 
 <form asp-action="index" asp-controller="outlay" method="post">
-    <input type="submit" value="Show me my outlays. " />
+    <input type="submit" value="Show me my outlays." />
 </form>
 
 @section Scripts {
