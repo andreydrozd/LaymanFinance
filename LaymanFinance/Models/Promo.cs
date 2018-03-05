@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LaymanFinance.Models
 {
-    public partial class Promo
+    public class Promo
     {
         public Promo()
         {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LaymanFinance.Models
 {
-    public partial class Inflow
+    public class Inflow
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }

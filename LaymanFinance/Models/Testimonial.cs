@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LaymanFinance.Models
 {
-    public partial class Testimonial
+    public class Testimonial
     {
         public int Id { get; set; }
         public int ServiceId { get; set; }
