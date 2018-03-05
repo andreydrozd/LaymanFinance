@@ -30,7 +30,7 @@ namespace LaymanFinance.Controllers
         public IActionResult EnterInflow()
         {
             InflowEntryViewModel inflowEntryViewModel = new InflowEntryViewModel();
-            inflowEntryViewModel.Categories = _context.Category.Select(x => x.Name).ToArray();
+            inflowEntryViewModel.Categories = _context.Category.Where(x => x.ForInflows).Select(x => x.Name).ToArray();
             return View(inflowEntryViewModel);
         }
 

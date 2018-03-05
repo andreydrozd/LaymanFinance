@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using LaymanFinance.Models;
+using SendGrid;
 
 namespace LaymanFinance.Controllers
 {
     public class AccountController : Controller
     {
-        //Using Microsoft.AspNetCore.Identity
         private SignInManager<ApplicationUser> _signInManager;
-        public AccountController(SignInManager<ApplicationUser> signInManager)
+        private SendGridClient _sendGridClient;
+
+        public AccountController(SignInManager<ApplicationUser> signInManager, SendGridClient sendGridClient)
         {
             this._signInManager = signInManager;
+            this._sendGridClient = sendGridClient;
         }
 
         public IActionResult Index()
@@ -38,7 +41,7 @@ namespace LaymanFinance.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public IActionResult Register(string username, string password)
+        public async Task<IActionResult> Register(string username, string password)
         {
             if (ModelState.IsValid)
             {
@@ -48,10 +51,17 @@ namespace LaymanFinance.Controllers
 
                 if (userResult.Succeeded)
                 {
-                    var passwordResult = _signInManager.UserManager.AddPasswordAsync(newUser, password).Result;
+                    var passwordResult = await _signInManager.UserManager.AddPasswordAsync(newUser, password);
                     if (passwordResult.Succeeded)
                     {
-                        _signInManager.SignInAsync(newUser, isPersistent: false).Wait();
+                        SendGrid.Helpers.Mail.SendGridMessage message = new SendGrid.Helpers.Mail.SendGridMessage();
+                        message.AddTo(username);
+                        message.Subject = "Welcome to Layman Finance!";
+                        message.SetFrom("laymanadmin@codingtemple.com");
+                        message.AddContent("text/plain", "Welcome to LaymanFinance, " + username + ". Get ready to take control of your finances.");
+                        await _sendGridClient.SendEmailAsync(message);
+
+                        await _signInManager.SignInAsync(newUser, isPersistent: false);
                         return RedirectToAction("Index", "Account");
                     }
                     else
@@ -83,11 +93,11 @@ namespace LaymanFinance.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public IActionResult Login(string username, string password)
+        public async Task<IActionResult> Login(string username, string password)
         {
             if (ModelState.IsValid)
             {
-                var result = _signInManager.PasswordSignInAsync(username, password, isPersistent: false, lockoutOnFailure: false).Result;
+                var result = await _signInManager.PasswordSignInAsync(username, password, isPersistent: false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Account");

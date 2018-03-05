@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using LaymanFinance.Models;
+using SendGrid;
 
 namespace LaymanFinance
 {
@@ -48,9 +49,15 @@ namespace LaymanFinance
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AndreyTestContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddTransient<SendGrid.SendGridClient>((x) =>
+            {
+                return new SendGridClient(Configuration["sendgrid"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This is where middleware is called and configured.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AndreyTestContext context)
         {
             if (env.IsDevelopment())
@@ -64,9 +71,7 @@ namespace LaymanFinance
             }
 
             app.UseStaticFiles();
-
             app.UseAuthentication();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

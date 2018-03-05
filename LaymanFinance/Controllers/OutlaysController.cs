@@ -31,7 +31,7 @@ namespace LaymanFinance.Controllers
         public IActionResult EnterOutlay()
         {
             OutlayEntryViewModel outlayEntryViewModel = new OutlayEntryViewModel();
-            outlayEntryViewModel.Categories = _context.Category.Select(x => x.Name).ToArray();
+            outlayEntryViewModel.Categories = _context.Category.Where(x => x.ForOutlays).Select(x => x.Name).ToArray();
             return View(outlayEntryViewModel);
         }
 
