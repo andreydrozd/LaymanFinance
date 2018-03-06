@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using LaymanFinance.Models;
 using SendGrid;
+using Braintree;
 
 namespace LaymanFinance
 {
@@ -53,6 +54,15 @@ namespace LaymanFinance
             services.AddTransient<SendGrid.SendGridClient>((x) =>
             {
                 return new SendGridClient(Configuration["sendgrid"]);
+            });
+
+            services.AddTransient<BraintreeGateway>((x) =>
+            {
+                return new BraintreeGateway(
+                    Configuration["braintree.environment"], 
+                    Configuration["braintree.merchantid"], 
+                    Configuration["braintree.publickey"], 
+                    Configuration["braintree.privatekey"]);
             });
         }
 

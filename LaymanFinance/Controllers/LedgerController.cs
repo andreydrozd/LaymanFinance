@@ -18,7 +18,6 @@ namespace LaymanFinance.Controllers
             _context = context;
         }
 
-        // GET: Ledger
         public ActionResult Index()
         {
             LedgerViewModel ledger = new LedgerViewModel();

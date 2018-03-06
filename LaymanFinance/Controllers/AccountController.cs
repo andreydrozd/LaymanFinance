@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 using LaymanFinance.Models;
 using SendGrid;
 
@@ -45,7 +46,7 @@ namespace LaymanFinance.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser newUser = new ApplicationUser { UserName = username };
+                ApplicationUser newUser = new ApplicationUser { UserName = username, Email = username };
 
                 var userResult = await _signInManager.UserManager.CreateAsync(newUser);
 
@@ -106,6 +107,69 @@ namespace LaymanFinance.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View();
+                }
+            }
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+
+            var user = await _signInManager.UserManager.FindByEmailAsync(email);
+
+            if(user != null)
+            {
+                string token = await _signInManager.UserManager.GeneratePasswordResetTokenAsync(user);
+                token = System.Net.WebUtility.UrlEncode(token);
+                string currentUrl = Request.GetDisplayUrl(); // This will get the URL for the current request.
+                Uri uri = new Uri(currentUrl); // This will wrap the current url into a "URI" object so I can split it into parts.
+                string resetUrl = uri.GetLeftPart(UriPartial.Authority); // This gives just the scheme and authority of the URI.
+                resetUrl += "/account/resetpassword?id=" + token + "&email=" + email;
+
+                SendGrid.Helpers.Mail.SendGridMessage message = new SendGrid.Helpers.Mail.SendGridMessage();
+                message.AddTo(email);
+                message.Subject = "Password reset instructions";
+                message.SetFrom("laymanadmin@codingtemple.com");
+                message.AddContent("text/plain", resetUrl);
+                message.AddContent("text/html", string.Format("<a href='{0}'>{0}</a>", resetUrl));
+                await _sendGridClient.SendEmailAsync(message);
+            }
+            return RedirectToAction("ResetSent");
+        }
+
+        [AllowAnonymous]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword (string token, string email, string password)
+        {
+            string originalToken = token;
+            var user = await _signInManager.UserManager.FindByEmailAsync(email);
+            if(user != null)
+            {
+                var result = await _signInManager.UserManager.ResetPasswordAsync(user, originalToken, password);
+                if (result.Succeeded)
+                {
+                    RedirectToAction("Login");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
                 }
             }
             return View();
