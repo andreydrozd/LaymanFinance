@@ -19,10 +19,10 @@ namespace LaymanFinance.Controllers
         }
 
         // GET: Inflows
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var inflows = _context.Users.Include(x => x.Inflow).ThenInclude(x => x.Category).First(x => x.Id == userId).Inflow;
+            var inflows = (await _context.Users.Include(x => x.Inflow).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Inflow;
             return View(inflows);
         }
 
@@ -115,7 +115,7 @@ namespace LaymanFinance.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", inflow.CategoryId);
             return View(inflow);
@@ -148,7 +148,7 @@ namespace LaymanFinance.Controllers
             var inflow = await _context.Inflow.SingleOrDefaultAsync(m => m.Id == id);
             _context.Inflow.Remove(inflow);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexAsync));
         }
 
         private bool InflowExists(int id)

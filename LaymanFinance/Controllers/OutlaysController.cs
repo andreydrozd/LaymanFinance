@@ -20,10 +20,10 @@ namespace LaymanFinance.Controllers
         }
 
         // GET: Outlays
-        public IActionResult Index(string sort = "")
+        public async Task<IActionResult> IndexAsync(string sort = "")
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var outlays = _context.Users.Include(x => x.Outlay).ThenInclude(x => x.Category).First(x => x.Id == userId).Outlay;
+            var outlays = (await _context.Users.Include(x => x.Outlay).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Outlay;
             if (!string.IsNullOrEmpty(sort))
             {
                 if(sort == "payee")
