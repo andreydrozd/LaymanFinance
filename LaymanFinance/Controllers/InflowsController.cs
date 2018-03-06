@@ -37,12 +37,12 @@ namespace LaymanFinance.Controllers
         // POST: Inflows/EnterInflow
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EnterInflow(InflowEntryViewModel model)
+        public async Task<IActionResult> EnterInflowAsync(InflowEntryViewModel model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var inflow = model.Inflow;
-            inflow.ApplicationUser = _context.Users.Find(userId);
-            inflow.Category = _context.Category.First(x => x.Name == model.SelectedCategory);
+            inflow.ApplicationUser = await _context.Users.FindAsync(userId);
+            inflow.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
             _context.Inflow.Add(inflow);
             _context.SaveChanges();
 

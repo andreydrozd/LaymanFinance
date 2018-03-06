@@ -26,7 +26,7 @@ namespace LaymanFinance.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
         public virtual DbSet<Testimonial> Testimonial { get; set; }
-        //public virtual DbSet<OutlayEntryViewModel> OutlayEntryViewModel { get; set; }
+        // You don't register view models in the context.
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

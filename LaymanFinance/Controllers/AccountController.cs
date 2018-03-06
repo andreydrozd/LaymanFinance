@@ -26,9 +26,9 @@ namespace LaymanFinance.Controllers
             return View();
         }
 
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            _signInManager.SignOutAsync().Wait();
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
 
@@ -47,7 +47,7 @@ namespace LaymanFinance.Controllers
             {
                 ApplicationUser newUser = new ApplicationUser { UserName = username };
 
-                var userResult = _signInManager.UserManager.CreateAsync(newUser).Result;
+                var userResult = await _signInManager.UserManager.CreateAsync(newUser);
 
                 if (userResult.Succeeded)
                 {
@@ -70,7 +70,7 @@ namespace LaymanFinance.Controllers
                         {
                             ModelState.AddModelError(error.Code, error.Description);
                         }
-                        _signInManager.UserManager.DeleteAsync(newUser).Wait();
+                        await _signInManager.UserManager.DeleteAsync(newUser);
                     }
                 }
                 else

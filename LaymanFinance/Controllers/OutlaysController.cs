@@ -20,10 +20,21 @@ namespace LaymanFinance.Controllers
         }
 
         // GET: Outlays
-        public IActionResult Index()
+        public IActionResult Index(string sort = "")
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var outlays = _context.Users.Include(x => x.Outlay).ThenInclude(x => x.Category).First(x => x.Id == userId).Outlay;
+            if (!string.IsNullOrEmpty(sort))
+            {
+                if(sort == "payee")
+                {
+                    outlays = outlays.OrderBy(x => x.Payee).ToArray();
+                }
+                if(sort == "amount")
+                {
+                    outlays = outlays.OrderBy(x => x.Amount).ToArray();
+                }
+            }
             return View(outlays);
         }
 
@@ -38,12 +49,12 @@ namespace LaymanFinance.Controllers
         // POST: Outlays/EnterOutlay
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EnterOutlay(OutlayEntryViewModel model)
+        public async Task<IActionResult> EnterOutlayAsync(OutlayEntryViewModel model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var outlay = model.Outlay;
-            outlay.ApplicationUser = _context.Users.Find(userId);
-            outlay.Category = _context.Category.First(x => x.Name == model.SelectedCategory);
+            outlay.ApplicationUser = await _context.Users.FindAsync(userId);
+            outlay.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
             _context.Outlay.Add(outlay);
             _context.SaveChanges();
 
