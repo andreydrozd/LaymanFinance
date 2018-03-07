@@ -19,7 +19,7 @@ namespace LaymanFinance.Controllers
         }
 
         // GET: Inflows
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> Index()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var inflows = (await _context.Users.Include(x => x.Inflow).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Inflow;
@@ -37,7 +37,7 @@ namespace LaymanFinance.Controllers
         // POST: Inflows/EnterInflow
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EnterInflowAsync(InflowEntryViewModel model)
+        public async Task<IActionResult> EnterInflow(InflowEntryViewModel model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var inflow = model.Inflow;
@@ -115,7 +115,7 @@ namespace LaymanFinance.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(IndexAsync));
+                return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", inflow.CategoryId);
             return View(inflow);
@@ -148,7 +148,7 @@ namespace LaymanFinance.Controllers
             var inflow = await _context.Inflow.SingleOrDefaultAsync(m => m.Id == id);
             _context.Inflow.Remove(inflow);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(IndexAsync));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool InflowExists(int id)

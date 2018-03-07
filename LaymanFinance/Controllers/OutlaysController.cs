@@ -20,7 +20,7 @@ namespace LaymanFinance.Controllers
         }
 
         // GET: Outlays
-        public async Task<IActionResult> IndexAsync(string sort = "")
+        public async Task<IActionResult> Index(string sort = "")
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var outlays = (await _context.Users.Include(x => x.Outlay).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Outlay;
@@ -49,7 +49,7 @@ namespace LaymanFinance.Controllers
         // POST: Outlays/EnterOutlay
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EnterOutlayAsync(OutlayEntryViewModel model)
+        public async Task<IActionResult> EnterOutlay(OutlayEntryViewModel model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var outlay = model.Outlay;
