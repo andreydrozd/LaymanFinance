@@ -53,6 +53,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
     <script type="text/javascript">
         var outlayAllocation = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))');
+        
+
 
     </script>
 }

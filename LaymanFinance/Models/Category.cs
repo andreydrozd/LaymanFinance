@@ -19,7 +19,7 @@ namespace LaymanFinance.Models
         public decimal BudgetedAmount { get; set; }
         public bool ForOutlays { get; set; }
         public bool ForInflows { get; set; }
-        public bool IsDiscretionary { get; set; }
+        public bool? IsDiscretionary { get; set; }
 
         // These are the one-to-many relationships of Category
         public ICollection<Inflow> Inflow { get; set; }

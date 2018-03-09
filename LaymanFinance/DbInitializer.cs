@@ -17,8 +17,9 @@ namespace LaymanFinance
             //Once created, you can start adding records, if none exist.
             if (!context.Category.Any())
             {
-                //Outlay transactions
-                //Non-discretionary
+                //OUTLAY TRANSACTIONS
+
+                //NON-DISCRETIONARY
                 context.Category.Add(new Category
                 {
                     Name = "Housing",
@@ -100,7 +101,7 @@ namespace LaymanFinance
                     IsDiscretionary = false
                 });
 
-                //Discretionary
+                //DISCRETIONARY
                 context.Category.Add(new Category
                 {
                     Name = "Auto Maintenance",
@@ -132,6 +133,9 @@ namespace LaymanFinance
                 {
                     Name = "Gifts",
                     BudgetedAmount = 400,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
                 });
 
                 context.Category.Add(new Category
@@ -152,41 +156,41 @@ namespace LaymanFinance
                     IsDiscretionary = true
                 });
 
-                //Inflow Transactions
+                //INFLOW TRANSACTIONS
                 context.Category.Add(new Category
                 {
                     Name = "Wages and Salary",
                     BudgetedAmount = 7000,
-                    ForInflows = false,
-                    ForOutlays = true,
-                    IsDiscretionary = true
+                    ForInflows = true,
+                    ForOutlays = false,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Investments",
-                    BudgetedAmount = 7000,
-                    ForInflows = false,
-                    ForOutlays = true,
-                    IsDiscretionary = true
+                    BudgetedAmount = 100,
+                    ForInflows = true,
+                    ForOutlays = false,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Sidehustle",
-                    BudgetedAmount = 7000,
-                    ForInflows = false,
-                    ForOutlays = true,
-                    IsDiscretionary = true
+                    BudgetedAmount = 500,
+                    ForInflows = true,
+                    ForOutlays = false,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Presents",
-                    BudgetedAmount = 7000,
-                    ForInflows = false,
-                    ForOutlays = true,
-                    IsDiscretionary = true
+                    BudgetedAmount = 0,
+                    ForInflows = true,
+                    ForOutlays = false,
+                    IsDiscretionary = false
                 });
 
                 //Finally, SaveChanges on the Context to commit these to the database
@@ -195,6 +199,23 @@ namespace LaymanFinance
 
             if (!context.Transaction.Any())
             {
+                // SEPTEMBER TRANSACTIONS
+
+                // 1
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 9, 3),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+                
+                // 2
                 context.Transaction.Add(new Transaction
                 {
                     DateOccurred = new DateTime(2018, 3, 8),
@@ -207,6 +228,402 @@ namespace LaymanFinance
                     IsOutlay = true,
                     CategoryId = 1
                 });
+
+                // 3
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 4
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 5
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 6
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 7
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 8
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 9
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 10
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 11
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 12
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 13
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 14
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 15
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 16
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 17
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 18
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 19
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 20
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 21
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 22
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 23
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 24
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 25
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+                // 1I
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = true,
+                    IsOutlay = false,
+                    CategoryId = 1
+                });
+
+                // 2I
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = true,
+                    IsOutlay = false,
+                    CategoryId = 1
+                });
+
+                // 3I
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = true,
+                    IsOutlay = false,
+                    CategoryId = 1
+                });
+
+                // 4I
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = true,
+                    IsOutlay = false,
+                    CategoryId = 1
+                });
+
+                // 5I
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = true,
+                    IsOutlay = false,
+                    CategoryId = 1
+                });
+
+
+
+
 
 
 
