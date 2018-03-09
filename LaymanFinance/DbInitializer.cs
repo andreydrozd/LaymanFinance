@@ -17,79 +17,115 @@ namespace LaymanFinance
             //Once created, you can start adding records, if none exist.
             if (!context.Category.Any())
             {
+                //Outlay transactions
                 //Non-discretionary
                 context.Category.Add(new Category
                 {
                     Name = "Housing",
                     BudgetedAmount = 700,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Groceries",
                     BudgetedAmount = 200,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Transportation",
                     BudgetedAmount = 200,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Electricity",
                     BudgetedAmount = 200,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Water",
                     BudgetedAmount = 200,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Internet",
                     BudgetedAmount = 200,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Phone",
                     BudgetedAmount = 60,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Investments",
                     BudgetedAmount = 1000,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Charity",
                     BudgetedAmount = 140,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = false
                 });
 
                 //Discretionary
-
                 context.Category.Add(new Category
                 {
                     Name = "Auto Maintenance",
                     BudgetedAmount = 400,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Home Maintenance",
                     BudgetedAmount = 400,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Medical",
                     BudgetedAmount = 400,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
                 });
 
                 context.Category.Add(new Category
@@ -102,12 +138,55 @@ namespace LaymanFinance
                 {
                     Name = "Eating Out",
                     BudgetedAmount = 400,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
                 });
 
                 context.Category.Add(new Category
                 {
                     Name = "Entertainment",
                     BudgetedAmount = 400,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
+                });
+
+                //Inflow Transactions
+                context.Category.Add(new Category
+                {
+                    Name = "Wages and Salary",
+                    BudgetedAmount = 7000,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Investments",
+                    BudgetedAmount = 7000,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Sidehustle",
+                    BudgetedAmount = 7000,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Presents",
+                    BudgetedAmount = 7000,
+                    ForInflows = false,
+                    ForOutlays = true,
+                    IsDiscretionary = true
                 });
 
                 //Finally, SaveChanges on the Context to commit these to the database

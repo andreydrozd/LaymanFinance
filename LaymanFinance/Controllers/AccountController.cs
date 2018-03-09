@@ -101,7 +101,7 @@ namespace LaymanFinance.Controllers
                 var result = await _signInManager.PasswordSignInAsync(username, password, isPersistent: false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
