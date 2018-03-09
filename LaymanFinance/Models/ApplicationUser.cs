@@ -12,6 +12,7 @@ namespace LaymanFinance.Models
         {
             Outlay = new HashSet<Outlay>();
             Inflow = new HashSet<Inflow>();
+            Transaction = new HashSet<Transaction>();
         }
 
         // This adds extra columns to the User table
@@ -20,6 +21,7 @@ namespace LaymanFinance.Models
 
         public ICollection<Outlay> Outlay { get; set; }
         public ICollection<Inflow> Inflow { get; set; }
+        public ICollection<Transaction> Transaction { get; set; }
 
         // TODO: Connect users to their respective services.
         // public ICollection<ServiceDetail> ServiceDetail { get; set; }

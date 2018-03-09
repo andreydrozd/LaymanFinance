@@ -26,11 +26,50 @@ namespace LaymanFinance.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
         public virtual DbSet<Testimonial> Testimonial { get; set; }
+        public virtual DbSet<Transaction> Transaction { get; set; }
         // You don't register view models in the context.
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Transaction>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Amount).HasColumnType("money");
+
+                entity.Property(e => e.CategoryId).HasColumnName("CategoryId");
+
+                entity.Property(e => e.DateEntered)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.DateModified)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.DateOccurred).HasColumnType("date");
+
+                entity.Property(e => e.Memo).HasMaxLength(160);
+
+                entity.Property(e => e.Source)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Transaction)
+                    .HasForeignKey(d => d.CategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Transaction_Category");
+
+                entity.HasOne(d => d.ApplicationUser)
+                    .WithMany(p => p.Transaction)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Transaction_User");
+            });
+
 
             modelBuilder.Entity<Inflow>(entity =>
             {

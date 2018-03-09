@@ -10,6 +10,7 @@ namespace LaymanFinance.Models
         {
             Inflow = new HashSet<Inflow>();
             Outlay = new HashSet<Outlay>();
+            Transaction = new HashSet<Transaction>();
         }
 
         [Required(ErrorMessage = "Choose a category.")]
@@ -22,5 +23,6 @@ namespace LaymanFinance.Models
         // These are the one-to-many relationships of Category
         public ICollection<Inflow> Inflow { get; set; }
         public ICollection<Outlay> Outlay { get; set; }
+        public ICollection<Transaction> Transaction { get; set; }
     }
 }

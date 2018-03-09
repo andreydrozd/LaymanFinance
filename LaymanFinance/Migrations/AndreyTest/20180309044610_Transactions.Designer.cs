@@ -11,9 +11,10 @@ using System;
 namespace LaymanFinance.Migrations.AndreyTest
 {
     [DbContext(typeof(AndreyTestContext))]
-    partial class AndreyTestContextModelSnapshot : ModelSnapshot
+    [Migration("20180309044610_Transactions")]
+    partial class Transactions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -329,47 +330,37 @@ namespace LaymanFinance.Migrations.AndreyTest
             modelBuilder.Entity("LaymanFinance.Models.Transaction", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("money");
+                    b.Property<decimal>("Amount");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnName("CategoryId");
+                    b.Property<string>("ApplicationUserId");
 
-                    b.Property<DateTime>("DateEntered")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                    b.Property<int>("CategoryId");
 
-                    b.Property<DateTime?>("DateModified")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                    b.Property<DateTime>("DateEntered");
 
-                    b.Property<DateTime>("DateOccurred")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("DateModified");
+
+                    b.Property<DateTime>("DateOccurred");
 
                     b.Property<bool>("IsInflow");
 
                     b.Property<bool>("IsOutlay");
 
                     b.Property<string>("Memo")
-                        .IsRequired()
-                        .HasMaxLength(160);
+                        .IsRequired();
 
                     b.Property<string>("Source")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                        .IsRequired();
 
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Transaction");
                 });
@@ -538,15 +529,14 @@ namespace LaymanFinance.Migrations.AndreyTest
 
             modelBuilder.Entity("LaymanFinance.Models.Transaction", b =>
                 {
+                    b.HasOne("LaymanFinance.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Transaction")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("LaymanFinance.Models.Category", "Category")
                         .WithMany("Transaction")
                         .HasForeignKey("CategoryId")
-                        .HasConstraintName("FK_Transaction_Category");
-
-                    b.HasOne("LaymanFinance.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Transaction")
-                        .HasForeignKey("UserId")
-                        .HasConstraintName("FK_Transaction_User");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
