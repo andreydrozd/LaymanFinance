@@ -17,6 +17,7 @@ namespace LaymanFinance
             //Once created, you can start adding records, if none exist.
             if (!context.Category.Any())
             {
+                //Non-discretionary
                 context.Category.Add(new Category
                 {
                     Name = "Housing",
@@ -37,6 +38,30 @@ namespace LaymanFinance
 
                 context.Category.Add(new Category
                 {
+                    Name = "Electricity",
+                    BudgetedAmount = 200,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Water",
+                    BudgetedAmount = 200,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Internet",
+                    BudgetedAmount = 200,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Phone",
+                    BudgetedAmount = 60,
+                });
+
+                context.Category.Add(new Category
+                {
                     Name = "Investments",
                     BudgetedAmount = 1000,
                 });
@@ -47,23 +72,70 @@ namespace LaymanFinance
                     BudgetedAmount = 140,
                 });
 
+                //Discretionary
+
                 context.Category.Add(new Category
                 {
-                    Name = "Discretionary",
+                    Name = "Auto Maintenance",
                     BudgetedAmount = 400,
                 });
 
                 context.Category.Add(new Category
                 {
-                    Name = "Phone",
-                    BudgetedAmount = 60,
+                    Name = "Home Maintenance",
+                    BudgetedAmount = 400,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Medical",
+                    BudgetedAmount = 400,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Gifts",
+                    BudgetedAmount = 400,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Eating Out",
+                    BudgetedAmount = 400,
+                });
+
+                context.Category.Add(new Category
+                {
+                    Name = "Entertainment",
+                    BudgetedAmount = 400,
                 });
 
                 //Finally, SaveChanges on the Context to commit these to the database
                 context.SaveChanges();
             }
 
-            if(!context.Service.Any())
+            if (!context.Transaction.Any())
+            {
+                context.Transaction.Add(new Transaction
+                {
+                    DateOccurred = new DateTime(2018, 3, 8),
+                    DateEntered = DateTime.Now,
+                    DateModified = null,
+                    Amount = 20,
+                    Source = "Whole Foods",
+                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
+                    IsInflow = false,
+                    IsOutlay = true,
+                    CategoryId = 1
+                });
+
+
+
+                //Finally, SaveChanges on the Context to commit these to the database
+                context.SaveChanges();
+            }
+
+            if (!context.Service.Any())
             {
                 context.Service.Add(new Service
                 {
@@ -99,83 +171,6 @@ namespace LaymanFinance
                 context.SaveChanges();
             }
 
-            if (!context.Outlay.Any())
-            {
-                context.Outlay.Add(new Outlay
-                {
-                    Amount = 10,
-                    CategoryId = 6,
-                    DateEntered = DateTime.Now,
-                    DateModified = null,
-                    DateOccurred = DateTime.Now,
-                    Memo = "Saturday is for the boys",
-                    Payee = "Panda Express"
-                });
-
-                context.Outlay.Add(new Outlay
-                {
-                    Amount = 20,
-                    CategoryId = 2,
-                    DateEntered = DateTime.Now,
-                    DateModified = null,
-                    DateOccurred = DateTime.Now,
-                    Memo = "Testing the difference between Whole Foods and Mariano's meat",
-                    Payee = "Whole Foods"
-                });
-
-                context.Outlay.Add(new Outlay
-                {
-                    Amount = 30,
-                    CategoryId = 3,
-                    DateEntered = DateTime.Now,
-                    DateModified = null,
-                    DateOccurred = DateTime.Now,
-                    Memo = "regular fill-up",
-                    Payee = "Shell"
-                });
-
-                //Finally, SaveChanges on the Context to commit these to the database
-                context.SaveChanges();
-            }
-
-            if (!context.Inflow.Any())
-            {
-                context.Inflow.Add(new Inflow
-                {
-                    Amount= 20,
-                    CategoryId = 3,
-                    DateEntered = DateTime.Now,
-                    DateModified = null,
-                    DateOccurred = DateTime.Now,
-                    Memo = "won a bet on Bayern - Barcelona CL game.",
-                    Payor = "Broseidon"
-                });
-
-                context.Inflow.Add(new Inflow
-                {
-                    Amount = 50,
-                    CategoryId = 2,
-                    DateEntered = DateTime.Now,
-                    DateModified = null,
-                    DateOccurred = DateTime.Now,
-                    Memo = "Received Lyft payout for last week of February",
-                    Payor = "Lyft"
-                });
-
-                context.Inflow.Add(new Inflow
-                {
-                    Amount = 3000,
-                    CategoryId = 1,
-                    DateEntered = DateTime.Now,
-                    DateModified = null,
-                    DateOccurred = DateTime.Now,
-                    Memo = "Second half of February check",
-                    Payor = "Best Devs Inc."
-                });
-
-                //Finally, SaveChanges on the Context to commit these to the database
-                context.SaveChanges();
-            }
         }
     }
 }

@@ -46,8 +46,7 @@ namespace LaymanFinance.Models
                     .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.DateModified)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.DateOccurred).HasColumnType("date");
 
