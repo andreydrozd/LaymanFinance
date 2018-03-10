@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Transaction>
 @{
-    ViewData["Title"] = "Outlays";
+    ViewData["Title"] = "Inflows";
 }
 
-<h2>Gaze at your outlays.</h2>
+<h2>Gaze at your inflows.</h2>
 
 <div class="row">
     <div class="col-2">
@@ -23,32 +23,32 @@
     </div>
 </div>
 
-@foreach (var outlay in Model)
+@foreach (var inflow in Model)
 {
     <div class="row">
         <div class="col-2">
-            <p>@outlay.DateOccurred.ToShortDateString()</p>
+            <p>@inflow.DateOccurred.ToShortDateString()</p>
         </div>
         <div class="col-2">
-            <p>@outlay.Amount.ToString("c")</p>
+            <p>@inflow.Amount.ToString("c")</p>
             @*
                 This is done when the model property is nullable.
                 <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
             *@
         </div>
         <div class="col-2">
-            <p>@outlay.Source</p>
+            <p>@inflow.Source</p>
         </div>
         <div class="col-2">
-            <p>@outlay.Memo</p>
+            <p>@inflow.Memo</p>
         </div>
         <div class="col-2">
-            <p>@outlay.Category.Name</p>
+            <p>@inflow.Category.Name</p>
         </div>
         <div class="col-2">
-            <a asp-action="Edit" asp-route-id="@outlay.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@outlay.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@outlay.Id">Delete</a>
+            <a asp-action="Edit" asp-route-id="@inflow.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@inflow.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@inflow.Id">Delete</a>
         </div>
     </div>
 }
@@ -57,8 +57,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
     <script type="text/javascript">
         var outlayAllocation = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))');
-        
+
 
 
     </script>
 }
+
+

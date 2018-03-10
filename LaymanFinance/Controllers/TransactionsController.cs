@@ -19,9 +19,6 @@ namespace LaymanFinance.Controllers
             _context = context;
         }
 
-        // var andreyTestContext = _context.Transaction.Include(t => t.ApplicationUser).Include(t => t.Category);
-
-
         // GET: Transactions
         public async Task<IActionResult> Index(string sort)
         {
@@ -67,6 +64,43 @@ namespace LaymanFinance.Controllers
             }
             return View(outlays);
         }
+
+        // GET: Inflows
+        public async Task<IActionResult> Inflows(string sort)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var inflows = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.IsInflow);
+            if (string.IsNullOrEmpty(sort))
+            {
+                inflows = inflows.OrderBy(x => x.DateOccurred).ToArray();
+            }
+            if (!string.IsNullOrEmpty(sort))
+            {
+                if (sort == "source")
+                {
+                    inflows = inflows.OrderBy(x => x.Source).ToArray();
+                }
+                if (sort == "amount")
+                {
+                    inflows = inflows.OrderBy(x => x.Amount).ToArray();
+                }
+            }
+            return View(inflows);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Transactions/Details/5
         public async Task<IActionResult> Details(int? id)
