@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaymanFinance.Models;
+using System.Security.Claims;
 
 namespace LaymanFinance.Controllers
 {
@@ -18,11 +19,53 @@ namespace LaymanFinance.Controllers
             _context = context;
         }
 
+        // var andreyTestContext = _context.Transaction.Include(t => t.ApplicationUser).Include(t => t.Category);
+
+
         // GET: Transactions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sort)
         {
-            var andreyTestContext = _context.Transaction.Include(t => t.ApplicationUser).Include(t => t.Category);
-            return View(await andreyTestContext.ToListAsync());
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction;
+            if (string.IsNullOrEmpty(sort))
+            {
+                transactions = transactions.OrderBy(x => x.DateOccurred).ToArray();
+            }
+            if (!string.IsNullOrEmpty(sort))
+            {
+                if(sort == "source")
+                {
+                    transactions = transactions.OrderBy(x => x.Source).ToArray();
+                }
+                if(sort == "amount")
+                {
+                    transactions = transactions.OrderBy(x => x.Amount).ToArray();
+                }
+            }
+            return View(transactions);
+        }
+
+        // GET: Outlays
+        public async Task<IActionResult> Outlays(string sort)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var outlays = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.IsOutlay);
+            if (string.IsNullOrEmpty(sort))
+            {
+                outlays = outlays.OrderBy(x => x.DateOccurred).ToArray();
+            }
+            if (!string.IsNullOrEmpty(sort))
+            {
+                if (sort == "source")
+                {
+                    outlays = outlays.OrderBy(x => x.Source).ToArray();
+                }
+                if (sort == "amount")
+                {
+                    outlays = outlays.OrderBy(x => x.Amount).ToArray();
+                }
+            }
+            return View(outlays);
         }
 
         // GET: Transactions/Details/5
