@@ -38,3 +38,8 @@ form > label {
     background-color: #008caf;
 }
 
+/* ENTER TRANSACTION */
+
+.categories-select{
+    display: inline;
+}

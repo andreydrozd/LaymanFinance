@@ -42,7 +42,7 @@ namespace LaymanFinance.Controllers
             return View(transactions);
         }
 
-        // GET: Outlays
+        // GET: Transactions/Outlays
         public async Task<IActionResult> Outlays(string sort)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -65,7 +65,7 @@ namespace LaymanFinance.Controllers
             return View(outlays);
         }
 
-        // GET: Inflows
+        // GET: Transactions/Inflows
         public async Task<IActionResult> Inflows(string sort)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -87,6 +87,36 @@ namespace LaymanFinance.Controllers
             }
             return View(inflows);
         }
+
+
+
+
+        // GET: Transactions/EnterTransaction
+        public IActionResult EnterTransaction()
+        {
+            TransactionViewModel transactionEntryViewModel = new TransactionViewModel();
+            transactionEntryViewModel.InflowCategories = _context.Category.Where(x => x.ForInflows).Select(x => x.Name).ToArray();
+            transactionEntryViewModel.OutlayCategories = _context.Category.Where(x => x.ForOutlays).Select(x => x.Name).ToArray();
+            return View(transactionEntryViewModel);
+        }
+
+        // POST: Transactions/EnterTransaction
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EnterTransaction(TransactionViewModel model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var transaction = model.Transaction;
+            transaction.ApplicationUser = await _context.Users.FindAsync(userId);
+            transaction.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
+            _context.Transaction.Add(transaction);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        
+
 
 
 

@@ -8,8 +8,6 @@ namespace LaymanFinance.Models
     {
         public Category()
         {
-            Inflow = new HashSet<Inflow>();
-            Outlay = new HashSet<Outlay>();
             Transaction = new HashSet<Transaction>();
         }
 
@@ -22,8 +20,6 @@ namespace LaymanFinance.Models
         public bool? IsDiscretionary { get; set; }
 
         // These are the one-to-many relationships of Category
-        public ICollection<Inflow> Inflow { get; set; }
-        public ICollection<Outlay> Outlay { get; set; }
         public ICollection<Transaction> Transaction { get; set; }
     }
 }

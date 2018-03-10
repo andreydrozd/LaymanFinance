@@ -10,8 +10,6 @@ namespace LaymanFinance.Models
     {
         public ApplicationUser ()
         {
-            Outlay = new HashSet<Outlay>();
-            Inflow = new HashSet<Inflow>();
             Transaction = new HashSet<Transaction>();
         }
 
@@ -19,8 +17,6 @@ namespace LaymanFinance.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public ICollection<Outlay> Outlay { get; set; }
-        public ICollection<Inflow> Inflow { get; set; }
         public ICollection<Transaction> Transaction { get; set; }
 
         // TODO: Connect users to their respective services.

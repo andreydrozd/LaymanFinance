@@ -19,9 +19,7 @@ namespace LaymanFinance.Models
         }
 
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Inflow> Inflow { get; set; }
         public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<Outlay> Outlay { get; set; }
         public virtual DbSet<Promo> Promo { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
@@ -69,44 +67,6 @@ namespace LaymanFinance.Models
                     .HasConstraintName("FK_Transaction_User");
             });
 
-
-            modelBuilder.Entity<Inflow>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Amount).HasColumnType("money");
-
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
-
-                entity.Property(e => e.DateEntered)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.DateModified)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.DateOccurred).HasColumnType("date");
-
-                entity.Property(e => e.Memo).HasMaxLength(160);
-
-                entity.Property(e => e.Payor)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Inflow)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Inflow_Category");
-
-                entity.HasOne(d => d.ApplicationUser)
-                    .WithMany(p => p.Inflow)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Inflow_User");
-            });
-
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -120,43 +80,6 @@ namespace LaymanFinance.Models
                     .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Total).HasColumnType("money");
-            });
-
-            modelBuilder.Entity<Outlay>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Amount).HasColumnType("money");
-
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
-
-                entity.Property(e => e.DateEntered)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.DateModified)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.DateOccurred).HasColumnType("date");
-
-                entity.Property(e => e.Memo).HasMaxLength(160);
-
-                entity.Property(e => e.Payee)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Outlay)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Outlay_Category");
-
-                entity.HasOne(d => d.ApplicationUser)
-                    .WithMany(p => p.Outlay)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Outlay_User");
             });
 
             modelBuilder.Entity<Promo>(entity =>
