@@ -132,25 +132,7 @@ namespace LaymanFinance.Controllers
 
 
 
-        // GET: Transactions/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var transaction = await _context.Transaction
-                .Include(t => t.ApplicationUser)
-                .Include(t => t.Category)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (transaction == null)
-            {
-                return NotFound();
-            }
-
-            return View(transaction);
-        }
+   
 
         // GET: Transactions/Create
         public IActionResult Create()
