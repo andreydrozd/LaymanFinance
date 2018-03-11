@@ -1,9 +1,23 @@
-﻿@model IEnumerable<Transaction>
+﻿@model TransactionViewModel
 @{
     ViewData["Title"] = "Outlays";
 }
 
-<h2>Gaze at your outlays.</h2>
+<div class="row">
+    <h2>Gaze at your outlays.</h2>
+    <div class="card">
+        <div class="card-header">Filter by Category</div>
+        <div class="card-body">
+            <form>
+                @foreach (string category in Model.Categories)
+                {
+                <input type="checkbox" value="@category" name="category" />@category
+                }
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-2">
@@ -23,7 +37,7 @@
     </div>
 </div>
 
-@foreach (var outlay in Model)
+@foreach (var outlay in Model.Transactions)
 {
     <div class="row">
         <div class="col-2">
@@ -55,7 +69,7 @@
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
     <script type="text/javascript">
-        var outlayAllocation = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))');
+        var outlayAllocation = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))');
         
 
 

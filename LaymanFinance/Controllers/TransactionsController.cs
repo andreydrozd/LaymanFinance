@@ -19,26 +19,39 @@ namespace LaymanFinance.Controllers
             _context = context;
         }
 
-        // GET: Transactions
-        public async Task<IActionResult> Index(string sort)
+        // GET: List all of the Transactions
+        public async Task<IActionResult> Index(string sort, string category)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction;
+            TransactionViewModel transactions = new TransactionViewModel
+            {
+                Transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction,
+                Categories = string.Join(",", _context.Category.Select(x => x.Name)).Split(",").Select(x => x.Trim()).Distinct().ToArray()
+            };
+
+            // Sorting by header functionality
             if (string.IsNullOrEmpty(sort))
             {
-                transactions = transactions.OrderBy(x => x.DateOccurred).ToArray();
+                transactions.Transactions = transactions.Transactions.OrderBy(x => x.DateOccurred).ToArray();
             }
             if (!string.IsNullOrEmpty(sort))
             {
-                if(sort == "source")
+                if (sort == "amount")
                 {
-                    transactions = transactions.OrderBy(x => x.Source).ToArray();
+                    transactions.Transactions = transactions.Transactions.OrderBy(x => x.Amount).ToArray();
                 }
-                if(sort == "amount")
+                if (sort == "source")
                 {
-                    transactions = transactions.OrderBy(x => x.Amount).ToArray();
+                    transactions.Transactions = transactions.Transactions.OrderBy(x => x.Source).ToArray();
                 }
             }
+
+            // Filter functionality
+            if (!string.IsNullOrEmpty(category))
+            {
+                transactions.Transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.Category.Name == category).ToList();
+            }
+
             return View(transactions);
         }
 
@@ -46,20 +59,25 @@ namespace LaymanFinance.Controllers
         public async Task<IActionResult> Outlays(string sort)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var outlays = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.IsOutlay);
+            TransactionViewModel outlays = new TransactionViewModel
+            {
+                Transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.IsOutlay).ToList(),
+                Categories = string.Join(",", _context.Category.Where(x => x.ForOutlays).Select(x => x.Name)).Split(",").Select(x => x.Trim()).Distinct().ToArray()
+            };
+
             if (string.IsNullOrEmpty(sort))
             {
-                outlays = outlays.OrderBy(x => x.DateOccurred).ToArray();
+                outlays.Transactions = outlays.Transactions.OrderBy(x => x.DateOccurred).ToArray();
             }
             if (!string.IsNullOrEmpty(sort))
             {
                 if (sort == "source")
                 {
-                    outlays = outlays.OrderBy(x => x.Source).ToArray();
+                    outlays.Transactions = outlays.Transactions.OrderBy(x => x.Source).ToArray();
                 }
                 if (sort == "amount")
                 {
-                    outlays = outlays.OrderBy(x => x.Amount).ToArray();
+                    outlays.Transactions = outlays.Transactions.OrderBy(x => x.Amount).ToArray();
                 }
             }
             return View(outlays);
@@ -69,41 +87,45 @@ namespace LaymanFinance.Controllers
         public async Task<IActionResult> Inflows(string sort)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var inflows = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.IsInflow);
+            TransactionViewModel inflows = new TransactionViewModel
+            {
+                Transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.IsInflow).ToList(),
+                Categories = string.Join(",", _context.Category.Where(x => x.ForInflows).Select(x => x.Name)).Split(",").Select(x => x.Trim()).Distinct().ToArray()
+            };
+
             if (string.IsNullOrEmpty(sort))
             {
-                inflows = inflows.OrderBy(x => x.DateOccurred).ToArray();
+                inflows.Transactions = inflows.Transactions.OrderBy(x => x.DateOccurred).ToArray();
             }
             if (!string.IsNullOrEmpty(sort))
             {
                 if (sort == "source")
                 {
-                    inflows = inflows.OrderBy(x => x.Source).ToArray();
+                    inflows.Transactions = inflows.Transactions.OrderBy(x => x.Source).ToArray();
                 }
                 if (sort == "amount")
                 {
-                    inflows = inflows.OrderBy(x => x.Amount).ToArray();
+                    inflows.Transactions = inflows.Transactions.OrderBy(x => x.Amount).ToArray();
                 }
             }
             return View(inflows);
         }
 
-
-
-
         // GET: Transactions/EnterTransaction
         public IActionResult EnterTransaction()
         {
-            TransactionViewModel transactionEntryViewModel = new TransactionViewModel();
-            transactionEntryViewModel.InflowCategories = _context.Category.Where(x => x.ForInflows).Select(x => x.Name).ToArray();
-            transactionEntryViewModel.OutlayCategories = _context.Category.Where(x => x.ForOutlays).Select(x => x.Name).ToArray();
+            TransactionEntryViewModel transactionEntryViewModel = new TransactionEntryViewModel
+            {
+                InflowCategories = _context.Category.Where(x => x.ForInflows).Select(x => x.Name).ToArray(),
+                OutlayCategories = _context.Category.Where(x => x.ForOutlays).Select(x => x.Name).ToArray(),
+            };
             return View(transactionEntryViewModel);
         }
 
         // POST: Transactions/EnterTransaction
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EnterTransaction(TransactionViewModel model)
+        public async Task<IActionResult> EnterTransaction(TransactionEntryViewModel model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var transaction = model.Transaction;
@@ -116,16 +138,6 @@ namespace LaymanFinance.Controllers
         }
 
         
-
-
-
-
-
-
-
-
-
-
 
 
 

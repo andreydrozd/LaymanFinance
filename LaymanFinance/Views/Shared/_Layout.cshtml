@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="row">
-        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <nav id="sidebar" class="navbar-dark bg-dark">
                 <a asp-area="" asp-controller="Dashboard" asp-action="Index" class="navbar-brand">Layman Finance</a>
                 <ul class="navbar-nav">
@@ -26,11 +26,20 @@
                     <li class="nav-item"><a asp-controller="Transactions" asp-action="EnterTransaction" class="nav-link">Enter a Transaction</a></li>
                     <li class="nav-item"><a asp-controller="Transactions" asp-action="Outlays" class="nav-link">Outlays</a></li>
                     <li class="nav-item"><a asp-controller="Transactions" asp-action="Inflows" class="nav-link">Inflows</a></li>
-                    <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link">Logout as @User.Identity.Name</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @User.Identity.Name
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a asp-controller="Account" asp-action="EditAccount" class="dropdown-item">Edit Account Information</a>
+                            <a asp-controller="Account" asp-action="Logout" class="dropdown-item">Logout</a>
+                        </div>
+                    </li>
+
                 </ul>
             </nav>
         </div>
-        <div class="col-sm-10 col-md-10 col-lg-10">
+        <div class="col-sm-9 col-md-9 col-lg-9">
             @RenderBody()
         </div>
     </div>     

@@ -1,11 +1,23 @@
-﻿@model IEnumerable<Transaction>
-
+﻿@model TransactionViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Transactions</h2>
-
+<div class="row">
+    <h2>Transactions</h2>
+    <div class="card">
+        <div class="card-header">Filter by Category</div>
+        <div class="card-body">
+            <form>
+                @foreach (string category in Model.Categories)
+                {
+                    <input type="checkbox" value="@category" name="category" />@category
+                }
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-2">
@@ -25,7 +37,7 @@
     </div>
 </div>
 
-@foreach (var transaction in Model)
+@foreach (var transaction in Model.Transactions)
 {
 <div class="row">
     <div class="col-2">
