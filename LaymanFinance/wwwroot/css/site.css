@@ -3,6 +3,30 @@
     background: #2c97ad;
 }
 
+/* NAVBAR */
+
+li.link-active a,
+li.link-active a:hover,
+li.link-active a:focus {
+    background-color: #4189C7;
+    color: white;
+}
+
+#sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* Import and mods of Bootstrap navbar, navbar-expand and col-2  */
+    display: flex;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+    padding: 0.5rem 1rem;
+    flex-flow: column wrap;
+}
+
+
 /* LOGIN/REGISTER */
 #user-form {
     position: absolute;
