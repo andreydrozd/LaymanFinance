@@ -9,6 +9,7 @@ namespace LaymanFinance.Models
         public Category()
         {
             Transaction = new HashSet<Transaction>();
+            UserCategory = new HashSet<UserCategory>();
         }
 
         [Required(ErrorMessage = "Choose a category.")]
@@ -19,7 +20,8 @@ namespace LaymanFinance.Models
         public bool ForInflows { get; set; }
         public bool? IsDiscretionary { get; set; }
 
-        // These are the one-to-many relationships of Category
+        // These are the relationships of Category
         public ICollection<Transaction> Transaction { get; set; }
+        public ICollection<UserCategory> UserCategory { get; set; }
     }
 }

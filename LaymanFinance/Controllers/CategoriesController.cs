@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaymanFinance.Models;
+using System.Security.Claims;
 
 namespace LaymanFinance.Controllers
 {
@@ -21,7 +22,25 @@ namespace LaymanFinance.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            CategoryViewModel model = new CategoryViewModel
+            {
+                Inflows = (await _context.Users
+                    .Include(x => x.UserCategories)
+                    .ThenInclude(x => x.Category)
+                    .FirstAsync(x => x.Id == userId))
+                    .UserCategories.Select(x => x.Category)
+                    .Where(x => x.ForInflows).ToArray(),
+
+                Outlays = (await _context.Users
+                    .Include(x => x.UserCategories)
+                    .ThenInclude(x => x.Category)
+                    .FirstAsync(x => x.Id == userId))
+                    .UserCategories.Select(x => x.Category)
+                    .Where(x => x.ForOutlays).ToArray(),
+            };
+
+            return View(model);
         }
 
         // GET: Categories/Details/5

@@ -1,59 +1,52 @@
-﻿@model IEnumerable<LaymanFinance.Models.Category>
+﻿@model CategoryViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <h2>Your Categories</h2>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BudgetedAmount)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ForOutlays)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ForInflows)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsDiscretionary)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BudgetedAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ForOutlays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ForInflows)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDiscretionary)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+
+<div class="row">
+    <h4>Your Inflow Categories</h4>
+</div>
+
+@foreach (var inflowCategory in Model.Inflows)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@inflowCategory.Name</h5>
+            <p class="card-text">@inflowCategory.BudgetedAmount</p>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@inflowCategory.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@inflowCategory.Id">Delete</a>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+
+<div class="row">
+    <h4>Your Outlay Categories</h4>
+</div>
+
+@foreach (var outlayCategory in Model.Outlays)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@outlayCategory.Name</h5>
+            <p class="card-text">@outlayCategory.BudgetedAmount</p>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@outlayCategory.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@outlayCategory.Id">Delete</a>
+        </div>
+    </div>
+}
+

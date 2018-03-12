@@ -11,6 +11,7 @@ namespace LaymanFinance.Models
         public ApplicationUser ()
         {
             Transaction = new HashSet<Transaction>();
+            UserCategories = new HashSet<UserCategory>();
         }
 
         // This adds extra columns to the User table
@@ -18,6 +19,7 @@ namespace LaymanFinance.Models
         public string LastName { get; set; }
 
         public ICollection<Transaction> Transaction { get; set; }
+        public ICollection<UserCategory> UserCategories { get; set; }
 
         // TODO: Connect users to their respective services.
         // public ICollection<ServiceDetail> ServiceDetail { get; set; }
