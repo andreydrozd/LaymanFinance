@@ -73,13 +73,13 @@ namespace LaymanFinance
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                app.UseDeveloperExceptionPage();
+                
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseMvc(routes =>

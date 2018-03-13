@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.EntityFrameworkCore;
 using LaymanFinance.Models;
 using SendGrid;
 
@@ -15,17 +17,53 @@ namespace LaymanFinance.Controllers
     {
         private SignInManager<ApplicationUser> _signInManager;
         private SendGridClient _sendGridClient;
+        private AndreyTestContext _context;
 
-        public AccountController(SignInManager<ApplicationUser> signInManager, SendGridClient sendGridClient)
+        public AccountController(SignInManager<ApplicationUser> signInManager, SendGridClient sendGridClient, AndreyTestContext context)
         {
-            this._signInManager = signInManager;
-            this._sendGridClient = sendGridClient;
+            _signInManager = signInManager;
+            _sendGridClient = sendGridClient;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var applicationUser = await _context.Users.SingleOrDefaultAsync(x => x.Id == userId);
+            return View(applicationUser);
         }
+
+        // GET: Account/Edit
+        public async Task<IActionResult> Edit()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var applicationUser = await _context.Users.SingleOrDefaultAsync(x => x.Id == userId);
+            return View(applicationUser);
+        }
+
+        // POST: Account/Edit
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ApplicationUser applicationUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var existingRecord = await _context.Users.SingleOrDefaultAsync(x => x.Id == userId);
+                existingRecord.FirstName = applicationUser.FirstName;
+                existingRecord.LastName = applicationUser.LastName;
+                existingRecord.PhoneNumber = applicationUser.PhoneNumber;
+
+                _context.Update(existingRecord);
+                await _context.SaveChangesAsync();
+              
+                return RedirectToAction("Index");
+            }
+            return View(applicationUser);
+        }
+
 
         public async Task<IActionResult> Logout()
         {
@@ -173,6 +211,12 @@ namespace LaymanFinance.Controllers
                 }
             }
             return View();
+        }
+
+        private bool ApplicationUserExists()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _context.ApplicationUser.Any(x => x.Id == userId);
         }
     }
 }

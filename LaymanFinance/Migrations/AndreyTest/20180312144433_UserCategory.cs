@@ -9,18 +9,7 @@ namespace LaymanFinance.Migrations.AndreyTest
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Category_AspNetUsers_ApplicationUserId",
-                table: "Category");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Category_ApplicationUserId",
-                table: "Category");
-
-            migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Category");
-
+            
             migrationBuilder.CreateTable(
                 name: "UserCategories",
                 columns: table => new
@@ -62,24 +51,7 @@ namespace LaymanFinance.Migrations.AndreyTest
         {
             migrationBuilder.DropTable(
                 name: "UserCategories");
-
-            migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Category",
-                nullable: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Category_ApplicationUserId",
-                table: "Category",
-                column: "ApplicationUserId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Category_AspNetUsers_ApplicationUserId",
-                table: "Category",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+            
         }
     }
 }

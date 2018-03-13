@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using LaymanFinance.Models;
 
 namespace LaymanFinance.Models
 {
@@ -174,5 +175,8 @@ namespace LaymanFinance.Models
                     .HasConstraintName("FK_Testimonial_Service");
             });
         }
+        // You don't register view models in the context.
+
+        public DbSet<LaymanFinance.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }
