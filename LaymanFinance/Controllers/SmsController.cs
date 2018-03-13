@@ -27,19 +27,20 @@ namespace LaymanFinance.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
         public TwiMLResult Index(SmsRequest userRequest)
         {
             var response = new MessagingResponse();
 
             var userNumber = _context.Users.Select(x => x.PhoneNumber).ToArray();
-            string requestBody = Request.Form["Body"];
             var requestNumber = (userRequest.From).ToString().Split("+1")[1];
             // response.Message($"Hello, {userRequest.From}!");
-
-            if (_context.Category.Select(x => x.Name).Contains(requestBody)) //& userNumber.Contains(requestNumber))
+            System.Diagnostics.Debug.Write("Hi !");
+            var userCat = _context.UserCategories.Include(x => x.Category).Include(x => x.ApplicationUser).FirstOrDefault(x => x.Category.Name == userRequest.Body && x.ApplicationUser.PhoneNumber == requestNumber);
+            if (userCat != null)
             {
-                var userCategoryAmount = _context.Category.Where(x => x.Name == requestBody).Select(x => x.BudgetedAmount);
-                response.Message("Your budgeted amount for " + requestBody + " is " + userCategoryAmount);
+                
+                response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.Category.BudgetedAmount.ToString("c"));
             }
             else
             {
