@@ -63,8 +63,15 @@ form > label {
     background-color: #008caf;
 }
 
-/* ENTER TRANSACTION */
+/* DASHBOARD */
+.chart-container {
+    position: relative;
+    height: 40vh;
+    width: 50vw
+}
 
+
+/* ENTER TRANSACTION */
 .categories-select{
     display: inline;
 }

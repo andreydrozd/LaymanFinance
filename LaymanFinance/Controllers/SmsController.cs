@@ -31,15 +31,17 @@ namespace LaymanFinance.Controllers
         public TwiMLResult Index(SmsRequest userRequest)
         {
             var response = new MessagingResponse();
-
+            // Getting all the numbers in the system into an array and the number from the request.
             var userNumber = _context.Users.Select(x => x.PhoneNumber).ToArray();
             var requestNumber = (userRequest.From).ToString().Split("+1")[1];
-            // response.Message($"Hello, {userRequest.From}!");
-            System.Diagnostics.Debug.Write("Hi !");
-            var userCat = _context.UserCategories.Include(x => x.Category).Include(x => x.ApplicationUser).FirstOrDefault(x => x.Category.Name == userRequest.Body && x.ApplicationUser.PhoneNumber == requestNumber);
+
+            var userCat = _context.UserCategories
+                .Include(x => x.Category)
+                .Include(x => x.ApplicationUser)
+                .FirstOrDefault(x => x.Category.Name == userRequest.Body && x.ApplicationUser.PhoneNumber == requestNumber);
+
             if (userCat != null)
             {
-                
                 response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.Category.BudgetedAmount.ToString("c"));
             }
             else

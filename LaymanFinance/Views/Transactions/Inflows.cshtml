@@ -72,7 +72,6 @@
         var outlayAllocation = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))');
 
 
-
     </script>
 }
 
