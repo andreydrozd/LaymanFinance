@@ -34,22 +34,20 @@ namespace LaymanFinance.Controllers
 
             DateTime currentDate = DateTime.Today;
             var currentMonth = currentDate.Month.ToString();
-            // Getting all the numbers in the system into an array and the number from the request.
-            var userNumber = _context.Users.Select(x => x.PhoneNumber).ToArray();
             var requestNumber = (userRequest.From).ToString().Split("+1")[1];
 
-            var userCat = _context.UserCategories
+            var userCategory = _context.UserCategories
                 .Include(x => x.Category)
                 .Include(x => x.ApplicationUser)
                 .FirstOrDefault(x => x.Category.Name == userRequest.Body && x.ApplicationUser.PhoneNumber == requestNumber);
 
-            var budgetedAmount = _context.UserCategories.Where(x => x.Category.Name == userRequest.Body).Sum(x => x.BudgetedAmount);
+            var budgetedAmount = _context.UserCategories.Where(x => x.Category.Name == userRequest.Body).Sum(y => y.BudgetedAmount);
             var actualAmount = _context.Transaction.Where(x => x.Category.Name == userRequest.Body && x.DateOccurred.Month.ToString() == currentMonth).Sum(y => y.Amount);
+            var remainingAmount = budgetedAmount - actualAmount;
 
-            if (userCat != null)
+            if (userCategory != null)
             {
-                response.Message("Your remaining budgeted amount for " + userCat.Category.Name + " is " + (budgetedAmount - actualAmount) + ".");
-                // response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.BudgetedAmount.ToString("c"));
+                response.Message("You have " +remainingAmount.ToString("c")+ " budgeted amount for " + userCategory.Category.Name + " is.");
             }
             else
             {
