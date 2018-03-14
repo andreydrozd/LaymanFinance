@@ -261,3 +261,4 @@ paket-files/
 __pycache__/
 *.pyc
 /ConsoleApp1
+/Categories.csv
