@@ -1,0 +1,3 @@
+﻿UPDATE [Transaction] 
+SET UserId = ''
+
