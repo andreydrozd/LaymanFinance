@@ -23,7 +23,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Housing",
-                    BudgetedAmount = 700,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -32,7 +31,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Groceries",
-                    BudgetedAmount = 200,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -41,7 +39,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Transportation",
-                    BudgetedAmount = 80,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -50,7 +47,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Electricity",
-                    BudgetedAmount = 75,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -59,7 +55,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Water",
-                    BudgetedAmount = 50,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -68,7 +63,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Internet",
-                    BudgetedAmount = 50,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -77,7 +71,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Phone",
-                    BudgetedAmount = 60,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -86,7 +79,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Investments",
-                    BudgetedAmount = 1000,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -95,7 +87,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Charity",
-                    BudgetedAmount = 140,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -105,7 +96,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Auto Maintenance and Insurance",
-                    BudgetedAmount = 400,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = true
@@ -114,7 +104,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Home Maintenance",
-                    BudgetedAmount = 300,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = true
@@ -123,7 +112,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Medical",
-                    BudgetedAmount = 100,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = true
@@ -132,7 +120,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Gifts",
-                    BudgetedAmount = 75,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = true
@@ -141,7 +128,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Eating Out",
-                    BudgetedAmount = 200,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = true
@@ -150,7 +136,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Entertainment",
-                    BudgetedAmount = 100,
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = true
@@ -161,7 +146,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Wages and Salary",
-                    BudgetedAmount = 7000,
                     ForInflows = true,
                     ForOutlays = false,
                     IsDiscretionary = null
@@ -170,7 +154,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Investment Income",
-                    BudgetedAmount = 100,
                     ForInflows = true,
                     ForOutlays = false,
                     IsDiscretionary = null
@@ -179,7 +162,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Sidehustle",
-                    BudgetedAmount = 500,
                     ForInflows = true,
                     ForOutlays = false,
                     IsDiscretionary = null
@@ -188,7 +170,6 @@ namespace LaymanFinance
                 context.Category.Add(new Category
                 {
                     Name = "Presents",
-                    BudgetedAmount = 0,
                     ForInflows = true,
                     ForOutlays = false,
                     IsDiscretionary = null

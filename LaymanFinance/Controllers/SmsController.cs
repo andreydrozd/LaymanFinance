@@ -42,7 +42,7 @@ namespace LaymanFinance.Controllers
 
             if (userCat != null)
             {
-                response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.Category.BudgetedAmount.ToString("c"));
+                response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.BudgetedAmount.ToString("c"));
             }
             else
             {

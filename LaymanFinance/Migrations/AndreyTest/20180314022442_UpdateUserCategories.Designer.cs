@@ -11,9 +11,10 @@ using System;
 namespace LaymanFinance.Migrations.AndreyTest
 {
     [DbContext(typeof(AndreyTestContext))]
-    partial class AndreyTestContextModelSnapshot : ModelSnapshot
+    [Migration("20180314022442_UpdateUserCategories")]
+    partial class UpdateUserCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,6 +80,8 @@ namespace LaymanFinance.Migrations.AndreyTest
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("BudgetedAmount");
 
                     b.Property<bool>("ForInflows");
 

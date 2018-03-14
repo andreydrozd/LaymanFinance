@@ -15,7 +15,6 @@ namespace LaymanFinance.Models
         [Required(ErrorMessage = "Choose a category.")]
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal BudgetedAmount { get; set; }
         public bool ForOutlays { get; set; }
         public bool ForInflows { get; set; }
         public bool? IsDiscretionary { get; set; }

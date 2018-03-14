@@ -8,6 +8,7 @@ namespace LaymanFinance.Models
     public class UserCategory
     {
         public int Id { get; set; }
+        public decimal BudgetedAmount { get; set; }
         public Category Category { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
