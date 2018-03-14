@@ -71,27 +71,66 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script type="text/javascript">
 
-    // For pie chart of actual transactions
-    var transactionTotals = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })));
-    var transactionTotalsCount = transactionTotals.length;
+    // For pie chart of actual outlays
+    var outlayTotals = @Html.Raw(Model.OutlayTotals);
+    var outlayTotalsCount = outlayTotals.length;
 
+    // For bar graph of acutal 
+
+    // For pie chart of actual inflows
+    var inflowTotals = @Html.Raw(Model.InflowTotals);
+    var inflowTotalsCount = inflowTotals.length;
+
+    // Charts
     var ctx = document.getElementById("barChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: transactionTotals.map((x) => x.Category),
+            labels: outlayTotals.map((x) => x.Category),
             datasets: [{
                 label: 'How the pie actually looks for this period',
-                data: transactionTotals.map((x) => x.Amount),
-                backgroundColor: transactionTotals.map((item, index) => {
-                        var hue = 360 * ((index) / transactionTotalsCount);
+                data: outlayTotals.map((x) => x.Amount),
+                backgroundColor: outlayTotals.map((item, index) => {
+                        var hue = 360 * ((index) / outlayTotalsCount);
                         return 'hsla(' + hue + ', 70%, 70%, 0.4)'
                     })
                 ,
-                borderColor: transactionTotals.map((item, index) => {
-                        var hue = 360 * ((index) / transactionTotalsCount);
+                borderColor: outlayTotals.map((item, index) => {
+                        var hue = 360 * ((index) / outlayTotalsCount);
                         return 'hsla(' + hue + ', 50%, 50%, 0.4)'
                     })
+                ,
+                borderWidth: 5
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    var ctx = document.getElementById("otherBarChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: inflowTotals.map((x) => x.Category),
+            datasets: [{
+                label: 'How the pie should look for this period',
+                data: inflowTotals.map((x) => x.Amount),
+                backgroundColor: inflowTotals.map((item, index) => {
+                    var hue = 360 * ((index) / inflowTotalsCount);
+                    return 'hsla(' + hue + ', 70%, 70%, 0.4)'
+                })
+                ,
+                borderColor: inflowTotals.map((item, index) => {
+                    var hue = 360 * ((index) / inflowTotalsCount);
+                    return 'hsla(' + hue + ', 50%, 50%, 0.4)'
+                })
                 ,
                 borderWidth: 5
             }]

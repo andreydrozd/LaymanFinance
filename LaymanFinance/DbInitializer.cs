@@ -78,7 +78,7 @@ namespace LaymanFinance
 
                 context.Category.Add(new Category
                 {
-                    Name = "Investments",
+                    Name = "Investments Allocation",
                     ForInflows = false,
                     ForOutlays = true,
                     IsDiscretionary = false
@@ -169,7 +169,7 @@ namespace LaymanFinance
 
                 context.Category.Add(new Category
                 {
-                    Name = "Presents",
+                    Name = "Gifts Received",
                     ForInflows = true,
                     ForOutlays = false,
                     IsDiscretionary = null
@@ -2469,7 +2469,7 @@ namespace LaymanFinance
                 // 13
                 context.Transaction.Add(new Transaction
                 {
-                    DateOccurred = new DateTime(2018, 4, 15),
+                    DateOccurred = new DateTime(2018, 2, 15),
                     DateEntered = DateTime.Now,
                     DateModified = null,
                     Amount = 10.23M,
@@ -2483,7 +2483,7 @@ namespace LaymanFinance
                 // 14
                 context.Transaction.Add(new Transaction
                 {
-                    DateOccurred = new DateTime(2018, 11, 15),
+                    DateOccurred = new DateTime(2018, 2, 15),
                     DateEntered = DateTime.Now,
                     DateModified = null,
                     Amount = 400,

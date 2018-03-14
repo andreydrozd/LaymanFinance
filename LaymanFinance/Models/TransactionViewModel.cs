@@ -8,7 +8,9 @@ namespace LaymanFinance.Models
     public class TransactionViewModel
     {
         public ICollection<Transaction> Transactions { get; set; }
-        public ICollection<UserCategory> UserCategories { get; set; }
+        public ICollection<Transaction> TransactionsChart { get; set; }
+        public string OutlayTotals { get; set; }
+        public string InflowTotals { get; set; }
         public string [] Categories { get; set; }
     }
 }

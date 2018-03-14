@@ -32,7 +32,7 @@ namespace LaymanFinance.Controllers
             // Sorting by header functionality
             if (string.IsNullOrEmpty(sort))
             {
-                transactions.Transactions = transactions.Transactions.OrderBy(x => x.DateOccurred).ToArray();
+                transactions.Transactions = transactions.Transactions.OrderByDescending(x => x.DateOccurred).ToArray();
             }
             if (!string.IsNullOrEmpty(sort))
             {
