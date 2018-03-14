@@ -35,7 +35,7 @@ namespace LaymanFinance.Controllers
                     .OrderByDescending(x => x.DateOccurred)
                     .Take(count).ToList(),
 
-                Categories = string.Join(",", _context.Category.Select(x => x.Name)).Split(",").Select(x => x.Trim()).Distinct().ToArray()
+                Categories = string.Join(",", _context.Category.Select(x => x.Name)).Split(",").Select(x => x.Trim()).Distinct().ToArray(),
             };
 
             return View(model);

@@ -71,23 +71,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script type="text/javascript">
 
-    var outlayAllocation = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))
-    var outlayAllocationCount = outlayAllocation.length;
+    // For pie chart of actual transactions
+    var transactionTotals = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })));
+    var transactionTotalsCount = transactionTotals.length;
+
     var ctx = document.getElementById("barChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: outlayAllocation.map((x) => x.Category),
+            labels: transactionTotals.map((x) => x.Category),
             datasets: [{
-                label: '# of Votes',
-                data: outlayAllocation.map((x) => x.Amount),
-                backgroundColor: outlayAllocation.map((item, index) => {
-                        var hue = 360 * ((index) / outlayAllocationCount);
+                label: 'How the pie actually looks for this period',
+                data: transactionTotals.map((x) => x.Amount),
+                backgroundColor: transactionTotals.map((item, index) => {
+                        var hue = 360 * ((index) / transactionTotalsCount);
                         return 'hsla(' + hue + ', 70%, 70%, 0.4)'
                     })
                 ,
-                borderColor: outlayAllocation.map((item, index) => {
-                        var hue = 360 * ((index) / outlayAllocationCount);
+                borderColor: transactionTotals.map((item, index) => {
+                        var hue = 360 * ((index) / transactionTotalsCount);
                         return 'hsla(' + hue + ', 50%, 50%, 0.4)'
                     })
                 ,
@@ -105,43 +107,7 @@
         }
     });
 
-    var ctx2 = document.getElementById("otherBarChart");
-    var myOtherChart = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 5
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
+    
 
 
 </script>

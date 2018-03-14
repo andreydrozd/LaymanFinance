@@ -40,9 +40,13 @@ namespace LaymanFinance.Controllers
                 .Include(x => x.ApplicationUser)
                 .FirstOrDefault(x => x.Category.Name == userRequest.Body && x.ApplicationUser.PhoneNumber == requestNumber);
 
+            var budgetedAmount = _context.UserCategories.Where(x => x.Category.Name == userRequest.Body).Sum(x => x.BudgetedAmount);
+            var actualAmount = _context.Transaction.Where(x => x.Category.Name == userRequest.Body).Sum(y => y.Amount);
+
             if (userCat != null)
             {
-                response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.BudgetedAmount.ToString("c"));
+                response.Message("Your remaining budgeted amount for " + userCat.Category.Name + " is " + (budgetedAmount - actualAmount) + ".");
+                // response.Message("Your budgeted amount for " + userCat.Category.Name + " is " + userCat.BudgetedAmount.ToString("c"));
             }
             else
             {
