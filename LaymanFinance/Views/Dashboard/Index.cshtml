@@ -5,11 +5,9 @@
 
 <div class="container-fluid">
     <div class="row">
+        <!--Inputs for which month's transactions you want to see. Goes 6 months back.-->
         <div>
-            <!--
-
-            -->
-            @for (int i = 0; i > -12; i--)
+            @for (int i = 0; i > -6; i--)
             {
                 <a asp-route-month="@DateTime.Now.AddMonths(i).Month" asp-route-year="@DateTime.Now.AddMonths(i).Year">@DateTime.Now.AddMonths(i).ToString("MMM-yy")</a>
             }
@@ -69,14 +67,11 @@
 
 </div>
 
-
-
 @section Scripts{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script type="text/javascript">
 
     var outlayAllocation = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))
-    //outlayAllocation[0].
     var outlayAllocationCount = outlayAllocation.length;
     var ctx = document.getElementById("barChart");
     var myChart = new Chart(ctx, {

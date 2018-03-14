@@ -17,7 +17,8 @@ namespace LaymanFinance.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? month, int? year, int count = 10)
+        // GET: Transactions returned based on time period selected. Returns 5 at a time.
+        public async Task<IActionResult> Index(int? month, int? year, int count = 5)
         {
             month = month ?? DateTime.Now.Month;
             year = year ?? DateTime.Now.Year;
@@ -30,7 +31,9 @@ namespace LaymanFinance.Controllers
                     .Include(x => x.Transaction)
                     .ThenInclude(x => x.Category)
                     .FirstAsync(x => x.Id == userId))
-                    .Transaction.Where(x => x.DateOccurred > startPeriod && x.DateOccurred < endPeriod).OrderByDescending(x => x.DateOccurred).Take(count).ToList(),
+                    .Transaction.Where(x => x.DateOccurred > startPeriod && x.DateOccurred < endPeriod)
+                    .OrderByDescending(x => x.DateOccurred)
+                    .Take(count).ToList(),
 
                 Categories = string.Join(",", _context.Category.Select(x => x.Name)).Split(",").Select(x => x.Trim()).Distinct().ToArray()
             };
