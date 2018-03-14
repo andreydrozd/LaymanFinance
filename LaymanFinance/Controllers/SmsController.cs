@@ -31,6 +31,9 @@ namespace LaymanFinance.Controllers
         public TwiMLResult Index(SmsRequest userRequest)
         {
             var response = new MessagingResponse();
+
+            DateTime currentDate = DateTime.Today;
+            var currentMonth = currentDate.Month.ToString();
             // Getting all the numbers in the system into an array and the number from the request.
             var userNumber = _context.Users.Select(x => x.PhoneNumber).ToArray();
             var requestNumber = (userRequest.From).ToString().Split("+1")[1];
@@ -41,7 +44,7 @@ namespace LaymanFinance.Controllers
                 .FirstOrDefault(x => x.Category.Name == userRequest.Body && x.ApplicationUser.PhoneNumber == requestNumber);
 
             var budgetedAmount = _context.UserCategories.Where(x => x.Category.Name == userRequest.Body).Sum(x => x.BudgetedAmount);
-            var actualAmount = _context.Transaction.Where(x => x.Category.Name == userRequest.Body).Sum(y => y.Amount);
+            var actualAmount = _context.Transaction.Where(x => x.Category.Name == userRequest.Body && x.DateOccurred.Month.ToString() == currentMonth).Sum(y => y.Amount);
 
             if (userCat != null)
             {

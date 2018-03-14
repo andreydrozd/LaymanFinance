@@ -5,7 +5,7 @@
 }
 
 <div class="col-md-4">
-    <h2>Enter your transaction, layman.</h2>
+    <h2>Enter your outlay, layman.</h2>
     <hr />
 
     @if (!this.ViewContext.ModelState.IsValid)
@@ -18,37 +18,26 @@
     <form class="form-group" method="post" novalidate>
         @Html.AntiForgeryToken()
         <div>
-            <label for="inflow.DateOccurred">Date</label>
-            <input class="form-control" type="date" name="inflow.DateOccurred" value="" required />
+            <label for="transaction.DateOccurred">Date</label>
+            <input class="form-control" type="date" name="transaction.DateOccurred" value="" required />
             <span class="invalid-feedback">When was the inflow?</span>
         </div>
         <div>
-            <label for="inflow.Amount">Amount</label>
-            <input class="form-control" type="number" name="inflow.Amount" value="" required />
+            <label for="transaction.Amount">Amount</label>
+            <input class="form-control" type="number" name="transaction.Amount" value="" required />
             <span class="invalid-feedback">How much was the inflow?</span>
         </div>
         <div>
-            <label for="inflow.Source">Source</label>
-            <input class="form-control" type="text" name="inflow.Payor" value="" required />
+            <label for="transaction.Source">Source</label>
+            <input class="form-control" type="text" name="transaction.Source" value="" required />
             <span class="invalid-feedback">Who gave thee money?</span>
         </div>
         <div>
-            <label for="inflow.Memo">Memo</label>
-            <input class="form-control" type="text" name="inflow.Memo" value="" required />
+            <label for="transaction.Memo">Memo</label>
+            <input class="form-control" type="text" name="transaction.Memo" value="" required />
             <span class="invalid-feedback">Give me some details for posterity's sake.</span>
         </div>
         <div>
-            <div class="categories-select">
-                <label>Category</label>
-                <select name="SelectedCategory" class="form-control" required>
-                    <option value="">Select an Inflow Category</option>
-                    @foreach (var cat in Model.InflowCategories)
-                    {
-                        <option value="@cat">@cat</option>
-                    }
-                </select>
-                <span class="invalid-feedback">Choose a category</span>
-            </div>
             <div class="categories-select">
                 <label>Category</label>
                 <select name="SelectedCategory" class="form-control" required>

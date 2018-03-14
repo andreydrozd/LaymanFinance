@@ -129,21 +129,36 @@ namespace LaymanFinance.Controllers
             return View(inflows);
         }
 
-        // GET: Transactions/EnterTransaction
-        public IActionResult EnterTransaction()
+        // GET: Transactions/Type
+        public IActionResult Type()
+        {
+            return View();
+        }
+
+        // GET: Transactions/EnterInflow
+        public IActionResult EnterInflow()
         {
             TransactionEntryViewModel transactionEntryViewModel = new TransactionEntryViewModel
             {
                 InflowCategories = _context.Category.Where(x => x.ForInflows).Select(x => x.Name).ToArray(),
+            };
+            return View(transactionEntryViewModel);
+        }
+
+        // GET: Transactions/EnterOutlay
+        public IActionResult EnterOutlay()
+        {
+            TransactionEntryViewModel transactionEntryViewModel = new TransactionEntryViewModel
+            {
                 OutlayCategories = _context.Category.Where(x => x.ForOutlays).Select(x => x.Name).ToArray(),
             };
             return View(transactionEntryViewModel);
         }
 
-        // POST: Transactions/EnterTransaction
+        // POST: Transactions/EnterInflow
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EnterTransaction(TransactionEntryViewModel model)
+        public async Task<IActionResult> EnterInflow(TransactionEntryViewModel model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var transaction = model.Transaction;
@@ -155,14 +170,43 @@ namespace LaymanFinance.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        // POST: Transactions/EnterOutlay
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EnterOutlay(TransactionEntryViewModel model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var transaction = model.Transaction;
+            transaction.ApplicationUser = await _context.Users.FindAsync(userId);
+            transaction.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
+            _context.Transaction.Add(transaction);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
 
 
 
 
 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Transactions/Create
         public IActionResult Create()
