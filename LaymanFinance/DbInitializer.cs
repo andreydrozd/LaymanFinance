@@ -194,7 +194,7 @@ namespace LaymanFinance
                     Memo = "Labor Day day trip fill-up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
                 
                 // 2
@@ -222,7 +222,7 @@ namespace LaymanFinance
                     Memo = "Paid August cell bill",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 12
                 });
 
                 // 4
@@ -236,7 +236,7 @@ namespace LaymanFinance
                     Memo = "Fillup",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 5
@@ -250,7 +250,7 @@ namespace LaymanFinance
                     Memo = "September rent",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 17
+                    CategoryId = 1
                 });
 
                 // 6
@@ -264,7 +264,7 @@ namespace LaymanFinance
                     Memo = "Lunch with David.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 7
@@ -278,7 +278,7 @@ namespace LaymanFinance
                     Memo = "Too lazy to make breakfast.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 8
@@ -292,7 +292,7 @@ namespace LaymanFinance
                     Memo = "Angelina's 11th birthday gift.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 9
@@ -306,7 +306,7 @@ namespace LaymanFinance
                     Memo = "Usual groceries",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 10
@@ -320,7 +320,7 @@ namespace LaymanFinance
                     Memo = "Mariano's had a sale on canned tuna, so I had to stock up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 11
@@ -334,7 +334,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Laura.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 12
@@ -348,7 +348,7 @@ namespace LaymanFinance
                     Memo = "Green tea after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 13
@@ -362,7 +362,7 @@ namespace LaymanFinance
                     Memo = "YouTube Red subscription",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 14
@@ -376,7 +376,7 @@ namespace LaymanFinance
                     Memo = "September brokerage account contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 15
@@ -390,7 +390,7 @@ namespace LaymanFinance
                     Memo = "September IRA contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 16
@@ -404,7 +404,7 @@ namespace LaymanFinance
                     Memo = "Birthday gift for mom.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 17
@@ -418,7 +418,7 @@ namespace LaymanFinance
                     Memo = "September monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 18
@@ -432,7 +432,7 @@ namespace LaymanFinance
                     Memo = "September monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 19
@@ -446,7 +446,7 @@ namespace LaymanFinance
                     Memo = "Saturday is for the boys.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 20
@@ -460,7 +460,7 @@ namespace LaymanFinance
                     Memo = "6-pack for Dan's BBQ",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 21
@@ -474,7 +474,7 @@ namespace LaymanFinance
                     Memo = "Testing the difference between Whole Foods and Mariano's meat",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 22
@@ -488,7 +488,7 @@ namespace LaymanFinance
                     Memo = "Regular grocery haul.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 23
@@ -502,7 +502,7 @@ namespace LaymanFinance
                     Memo = "Starbucks gift card for John's birthday.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 24
@@ -516,7 +516,7 @@ namespace LaymanFinance
                     Memo = "Lunch after church.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 25
@@ -530,7 +530,7 @@ namespace LaymanFinance
                     Memo = "Internet bill.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 12
+                    CategoryId = 13
                 });
 
                 // 1I
@@ -544,7 +544,7 @@ namespace LaymanFinance
                     Memo = "First paycheck of September.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 2I
@@ -558,7 +558,7 @@ namespace LaymanFinance
                     Memo = "Second paycheck of September",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 3I
@@ -572,7 +572,7 @@ namespace LaymanFinance
                     Memo = "Won a bet on the Chelsea-Bayern CL game.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
                 // 4I
@@ -586,7 +586,7 @@ namespace LaymanFinance
                     Memo = "Made some money on the GE stock bounceback.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 1
+                    CategoryId = 2
                 });
 
                 // 5I
@@ -600,7 +600,7 @@ namespace LaymanFinance
                     Memo = "Lyft payout.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
 
@@ -617,7 +617,7 @@ namespace LaymanFinance
                     Memo = "Regular fill-up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 2
@@ -631,7 +631,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Steve.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 3
@@ -645,7 +645,7 @@ namespace LaymanFinance
                     Memo = "Paid September cell bill",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 12
                 });
 
                 // 4
@@ -659,7 +659,7 @@ namespace LaymanFinance
                     Memo = "Fillup",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 5
@@ -673,7 +673,7 @@ namespace LaymanFinance
                     Memo = "October rent",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 17
+                    CategoryId = 1
                 });
 
                 // 6
@@ -687,7 +687,7 @@ namespace LaymanFinance
                     Memo = "Lunch with David.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 7
@@ -701,7 +701,7 @@ namespace LaymanFinance
                     Memo = "Too lazy to make breakfast.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 8
@@ -715,7 +715,7 @@ namespace LaymanFinance
                     Memo = "Lucas's 8th birthday gift.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 9
@@ -729,7 +729,7 @@ namespace LaymanFinance
                     Memo = "Usual groceries",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 10
@@ -743,7 +743,7 @@ namespace LaymanFinance
                     Memo = "Mariano's had a sale on canned tuna, so I had to stock up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 11
@@ -757,7 +757,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Laura.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 12
@@ -771,7 +771,7 @@ namespace LaymanFinance
                     Memo = "Green tea after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 13
@@ -785,7 +785,7 @@ namespace LaymanFinance
                     Memo = "YouTube Red subscription",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 14
@@ -799,7 +799,7 @@ namespace LaymanFinance
                     Memo = "October brokerage account contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 15
@@ -813,7 +813,7 @@ namespace LaymanFinance
                     Memo = "October IRA contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 16
@@ -827,7 +827,7 @@ namespace LaymanFinance
                     Memo = "Birthday gift for dad.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 17
@@ -841,7 +841,7 @@ namespace LaymanFinance
                     Memo = "October monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 18
@@ -855,7 +855,7 @@ namespace LaymanFinance
                     Memo = "October monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 19
@@ -869,7 +869,7 @@ namespace LaymanFinance
                     Memo = "Saturday is for the boys.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 20
@@ -883,7 +883,7 @@ namespace LaymanFinance
                     Memo = "6-pack for Allison's get-together.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 21
@@ -897,7 +897,7 @@ namespace LaymanFinance
                     Memo = "Testing the difference between Whole Foods and Mariano's meat",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 22
@@ -911,7 +911,7 @@ namespace LaymanFinance
                     Memo = "Regular grocery haul.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 23
@@ -925,7 +925,7 @@ namespace LaymanFinance
                     Memo = "Starbucks gift card for Alison's birthday.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 24
@@ -939,7 +939,7 @@ namespace LaymanFinance
                     Memo = "Lunch after church.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 25
@@ -953,7 +953,7 @@ namespace LaymanFinance
                     Memo = "Internet bill.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 12
+                    CategoryId = 13
                 });
 
                 // 1I
@@ -967,7 +967,7 @@ namespace LaymanFinance
                     Memo = "First paycheck of October.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 2I
@@ -981,7 +981,7 @@ namespace LaymanFinance
                     Memo = "Second paycheck of October",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 3I
@@ -995,7 +995,7 @@ namespace LaymanFinance
                     Memo = "Won a bet on the Chelsea-Tottenham game.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
                 // 4I
@@ -1009,7 +1009,7 @@ namespace LaymanFinance
                     Memo = "Made some money on the GE stock bounceback.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 1
+                    CategoryId = 2
                 });
 
                 // 5I
@@ -1023,7 +1023,7 @@ namespace LaymanFinance
                     Memo = "Lyft payout.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
 
@@ -1040,7 +1040,7 @@ namespace LaymanFinance
                     Memo = "Regular fill-up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 2
@@ -1054,7 +1054,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Steve.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 3
@@ -1068,7 +1068,7 @@ namespace LaymanFinance
                     Memo = "Paid October cell bill",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 12
                 });
 
                 // 4
@@ -1082,7 +1082,7 @@ namespace LaymanFinance
                     Memo = "Fillup",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 5
@@ -1096,7 +1096,7 @@ namespace LaymanFinance
                     Memo = "November rent",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 17
+                    CategoryId = 1
                 });
 
                 // 6
@@ -1110,7 +1110,7 @@ namespace LaymanFinance
                     Memo = "Lunch with David.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 7
@@ -1124,7 +1124,7 @@ namespace LaymanFinance
                     Memo = "Too lazy to make breakfast.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 8
@@ -1138,7 +1138,7 @@ namespace LaymanFinance
                     Memo = "Eleazar's 7th birthday gift.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 9
@@ -1152,7 +1152,7 @@ namespace LaymanFinance
                     Memo = "Usual groceries",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 10
@@ -1166,7 +1166,7 @@ namespace LaymanFinance
                     Memo = "Mariano's had a sale on canned tuna, so I had to stock up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 11
@@ -1180,7 +1180,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Amy.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 12
@@ -1194,7 +1194,7 @@ namespace LaymanFinance
                     Memo = "Green tea after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 13
@@ -1208,7 +1208,7 @@ namespace LaymanFinance
                     Memo = "YouTube Red subscription",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 14
@@ -1222,7 +1222,7 @@ namespace LaymanFinance
                     Memo = "November brokerage account contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 15
@@ -1236,7 +1236,7 @@ namespace LaymanFinance
                     Memo = "November IRA contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 16
@@ -1250,7 +1250,7 @@ namespace LaymanFinance
                     Memo = "Birthday gift for Vadim.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 17
@@ -1264,7 +1264,7 @@ namespace LaymanFinance
                     Memo = "November monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 18
@@ -1278,7 +1278,7 @@ namespace LaymanFinance
                     Memo = "November monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 19
@@ -1292,7 +1292,7 @@ namespace LaymanFinance
                     Memo = "Saturday is for the boys.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 20
@@ -1306,7 +1306,7 @@ namespace LaymanFinance
                     Memo = "6-pack for Jason's get-together.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 21
@@ -1320,7 +1320,7 @@ namespace LaymanFinance
                     Memo = "Testing the difference between Whole Foods and Mariano's meat",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 22
@@ -1334,7 +1334,7 @@ namespace LaymanFinance
                     Memo = "Regular grocery haul.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 23
@@ -1348,7 +1348,7 @@ namespace LaymanFinance
                     Memo = "Starbucks gift card for Ben's birthday.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 24
@@ -1362,7 +1362,7 @@ namespace LaymanFinance
                     Memo = "Brunch on Black Wednesday.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 25
@@ -1376,7 +1376,7 @@ namespace LaymanFinance
                     Memo = "Internet bill.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 13
                 });
 
                 // 1I
@@ -1390,7 +1390,7 @@ namespace LaymanFinance
                     Memo = "First paycheck of November.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 2I
@@ -1404,7 +1404,7 @@ namespace LaymanFinance
                     Memo = "Second paycheck of November",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 3I
@@ -1418,7 +1418,7 @@ namespace LaymanFinance
                     Memo = "Won a bet on the Man City-Man U game.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
                 // 4I
@@ -1432,7 +1432,7 @@ namespace LaymanFinance
                     Memo = "Made some money on the MSFT stock bounceback.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 1
+                    CategoryId = 2
                 });
 
                 // 5I
@@ -1446,7 +1446,7 @@ namespace LaymanFinance
                     Memo = "Lyft payout.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
 
@@ -1463,7 +1463,7 @@ namespace LaymanFinance
                     Memo = "Regular fill-up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 2
@@ -1477,7 +1477,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Steve.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 3
@@ -1491,7 +1491,7 @@ namespace LaymanFinance
                     Memo = "Paid November cell bill",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 12
                 });
 
                 // 4
@@ -1505,7 +1505,7 @@ namespace LaymanFinance
                     Memo = "Fillup",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 5
@@ -1519,7 +1519,7 @@ namespace LaymanFinance
                     Memo = "December rent",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 17
+                    CategoryId = 1
                 });
 
                 // 6
@@ -1533,7 +1533,7 @@ namespace LaymanFinance
                     Memo = "Lunch with David.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 7
@@ -1547,7 +1547,7 @@ namespace LaymanFinance
                     Memo = "Too lazy to make breakfast.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 8
@@ -1561,7 +1561,7 @@ namespace LaymanFinance
                     Memo = "Eleazar's 7th birthday gift.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 9
@@ -1575,7 +1575,7 @@ namespace LaymanFinance
                     Memo = "Usual groceries",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 10
@@ -1589,7 +1589,7 @@ namespace LaymanFinance
                     Memo = "Mariano's had a sale on canned beans, so I had to stock up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 11
@@ -1603,7 +1603,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Amy.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 12
@@ -1617,7 +1617,7 @@ namespace LaymanFinance
                     Memo = "Green tea after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 13
@@ -1631,7 +1631,7 @@ namespace LaymanFinance
                     Memo = "YouTube Red subscription",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 14
@@ -1645,7 +1645,7 @@ namespace LaymanFinance
                     Memo = "December brokerage account contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 15
@@ -1659,7 +1659,7 @@ namespace LaymanFinance
                     Memo = "December IRA contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 16
@@ -1673,7 +1673,7 @@ namespace LaymanFinance
                     Memo = "Birthday gift for Vadim.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 17
@@ -1687,7 +1687,7 @@ namespace LaymanFinance
                     Memo = "December monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 18
@@ -1701,7 +1701,7 @@ namespace LaymanFinance
                     Memo = "December monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 19
@@ -1715,7 +1715,7 @@ namespace LaymanFinance
                     Memo = "Christmas with the boys.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 20
@@ -1729,7 +1729,7 @@ namespace LaymanFinance
                     Memo = "6-pack for Jason's Christmas party.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 21
@@ -1743,7 +1743,7 @@ namespace LaymanFinance
                     Memo = "Got the Christmas turkey",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 22
@@ -1757,7 +1757,7 @@ namespace LaymanFinance
                     Memo = "Regular grocery haul.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 23
@@ -1771,7 +1771,7 @@ namespace LaymanFinance
                     Memo = "Christmas gift card for Ben.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 24
@@ -1785,7 +1785,7 @@ namespace LaymanFinance
                     Memo = "Lunch after church.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 25
@@ -1799,7 +1799,7 @@ namespace LaymanFinance
                     Memo = "Internet bill.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 13
                 });
 
                 // 1I
@@ -1813,7 +1813,7 @@ namespace LaymanFinance
                     Memo = "First paycheck of December.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 2I
@@ -1827,7 +1827,7 @@ namespace LaymanFinance
                     Memo = "Second paycheck of December",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 3I
@@ -1841,7 +1841,7 @@ namespace LaymanFinance
                     Memo = "Won a bet on the Man City-Man U game.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
                 // 4I
@@ -1855,7 +1855,7 @@ namespace LaymanFinance
                     Memo = "Made some money on the MSFT stock bounceback.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 1
+                    CategoryId = 2
                 });
 
                 // 5I
@@ -1869,7 +1869,7 @@ namespace LaymanFinance
                     Memo = "Lyft payout.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
 
@@ -1886,7 +1886,7 @@ namespace LaymanFinance
                     Memo = "Regular fill-up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 2
@@ -1900,7 +1900,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Steve.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 3
@@ -1914,7 +1914,7 @@ namespace LaymanFinance
                     Memo = "Paid December cell bill",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 12
                 });
 
                 // 4
@@ -1928,7 +1928,7 @@ namespace LaymanFinance
                     Memo = "Fillup",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 5
@@ -1942,7 +1942,7 @@ namespace LaymanFinance
                     Memo = "January rent",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 17
+                    CategoryId = 1
                 });
 
                 // 6
@@ -1956,7 +1956,7 @@ namespace LaymanFinance
                     Memo = "Lunch with David.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 7
@@ -1970,7 +1970,7 @@ namespace LaymanFinance
                     Memo = "Too lazy to make breakfast.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 8
@@ -1984,7 +1984,7 @@ namespace LaymanFinance
                     Memo = "Evnikas's 3rd birthday gift.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 9
@@ -1998,7 +1998,7 @@ namespace LaymanFinance
                     Memo = "Usual groceries",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 10
@@ -2012,7 +2012,7 @@ namespace LaymanFinance
                     Memo = "Mariano's had a sale on canned tuna, so I had to stock up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 11
@@ -2026,7 +2026,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Jake.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 12
@@ -2040,7 +2040,7 @@ namespace LaymanFinance
                     Memo = "Green tea after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 13
@@ -2054,7 +2054,7 @@ namespace LaymanFinance
                     Memo = "YouTube Red subscription",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 14
@@ -2068,7 +2068,7 @@ namespace LaymanFinance
                     Memo = "January brokerage account contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 15
@@ -2082,7 +2082,7 @@ namespace LaymanFinance
                     Memo = "January IRA contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 16
@@ -2096,7 +2096,7 @@ namespace LaymanFinance
                     Memo = "Birthday gift for Vadim.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 17
@@ -2110,7 +2110,7 @@ namespace LaymanFinance
                     Memo = "January monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 18
@@ -2124,7 +2124,7 @@ namespace LaymanFinance
                     Memo = "January monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 19
@@ -2138,7 +2138,7 @@ namespace LaymanFinance
                     Memo = "Saturday is for the boys.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 20
@@ -2152,7 +2152,7 @@ namespace LaymanFinance
                     Memo = "6-pack for Jason's get-together.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 21
@@ -2166,7 +2166,7 @@ namespace LaymanFinance
                     Memo = "Testing the difference between Whole Foods and Mariano's meat",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 22
@@ -2180,7 +2180,7 @@ namespace LaymanFinance
                     Memo = "Regular grocery haul.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 23
@@ -2194,7 +2194,7 @@ namespace LaymanFinance
                     Memo = "Starbucks gift card for Lane's birthday.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 24
@@ -2208,7 +2208,7 @@ namespace LaymanFinance
                     Memo = "Dinner after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 25
@@ -2222,7 +2222,7 @@ namespace LaymanFinance
                     Memo = "Internet bill.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 12
+                    CategoryId = 13
                 });
 
                 // 1I
@@ -2236,7 +2236,7 @@ namespace LaymanFinance
                     Memo = "First paycheck of January.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 2I
@@ -2250,7 +2250,7 @@ namespace LaymanFinance
                     Memo = "Second paycheck of January",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 3I
@@ -2264,7 +2264,7 @@ namespace LaymanFinance
                     Memo = "Won a bet on the Man City-Man U game.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
                 // 4I
@@ -2278,7 +2278,7 @@ namespace LaymanFinance
                     Memo = "Made some money on the TSLA stock bounceback.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 1
+                    CategoryId = 2
                 });
 
                 // 5I
@@ -2292,7 +2292,7 @@ namespace LaymanFinance
                     Memo = "Lyft payout.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
 
@@ -2309,7 +2309,7 @@ namespace LaymanFinance
                     Memo = "Regular fill-up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 2
@@ -2323,7 +2323,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Steve.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 3
@@ -2337,7 +2337,7 @@ namespace LaymanFinance
                     Memo = "Paid January cell bill",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 11
+                    CategoryId = 12
                 });
 
                 // 4
@@ -2351,7 +2351,7 @@ namespace LaymanFinance
                     Memo = "Fillup",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 15
+                    CategoryId = 16
                 });
 
                 // 5
@@ -2365,7 +2365,7 @@ namespace LaymanFinance
                     Memo = "February rent",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 17
+                    CategoryId = 1
                 });
 
                 // 6
@@ -2379,7 +2379,7 @@ namespace LaymanFinance
                     Memo = "Lunch with David.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 7
@@ -2393,7 +2393,7 @@ namespace LaymanFinance
                     Memo = "Too lazy to make breakfast.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 8
@@ -2407,7 +2407,7 @@ namespace LaymanFinance
                     Memo = "Eneya's 1st birthday gift.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 9
@@ -2421,7 +2421,7 @@ namespace LaymanFinance
                     Memo = "Usual groceries",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 10
@@ -2435,7 +2435,7 @@ namespace LaymanFinance
                     Memo = "Mariano's had a sale on canned tuna, so I had to stock up.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 11
@@ -2449,7 +2449,7 @@ namespace LaymanFinance
                     Memo = "Lunch with Jake.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 12
@@ -2463,7 +2463,7 @@ namespace LaymanFinance
                     Memo = "Green tea after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 13
@@ -2477,7 +2477,7 @@ namespace LaymanFinance
                     Memo = "YouTube Red subscription",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 14
@@ -2491,7 +2491,7 @@ namespace LaymanFinance
                     Memo = "February brokerage account contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 15
@@ -2505,7 +2505,7 @@ namespace LaymanFinance
                     Memo = "February IRA contribution",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 10
+                    CategoryId = 11
                 });
 
                 // 16
@@ -2519,7 +2519,7 @@ namespace LaymanFinance
                     Memo = "Birthday gift for Vadim.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 17
@@ -2533,7 +2533,7 @@ namespace LaymanFinance
                     Memo = "February monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 18
@@ -2547,7 +2547,7 @@ namespace LaymanFinance
                     Memo = "February monthly donation",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 9
+                    CategoryId = 18
                 });
 
                 // 19
@@ -2561,7 +2561,7 @@ namespace LaymanFinance
                     Memo = "Saturday is for the boys.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 20
@@ -2575,7 +2575,7 @@ namespace LaymanFinance
                     Memo = "6-pack for Jason's get-together.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 3
+                    CategoryId = 4
                 });
 
                 // 21
@@ -2589,7 +2589,7 @@ namespace LaymanFinance
                     Memo = "Testing the difference between Whole Foods and Mariano's meat",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 22
@@ -2603,7 +2603,7 @@ namespace LaymanFinance
                     Memo = "Regular grocery haul.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 16
+                    CategoryId = 17
                 });
 
                 // 23
@@ -2617,7 +2617,7 @@ namespace LaymanFinance
                     Memo = "Starbucks gift card for Eric's birthday.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 5
+                    CategoryId = 6
                 });
 
                 // 24
@@ -2631,7 +2631,7 @@ namespace LaymanFinance
                     Memo = "Dinner after work.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 4
+                    CategoryId = 5
                 });
 
                 // 25
@@ -2645,7 +2645,7 @@ namespace LaymanFinance
                     Memo = "Internet bill.",
                     IsInflow = false,
                     IsOutlay = true,
-                    CategoryId = 12
+                    CategoryId = 13
                 });
 
                 // 1I
@@ -2659,7 +2659,7 @@ namespace LaymanFinance
                     Memo = "First paycheck of February.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 2I
@@ -2673,7 +2673,7 @@ namespace LaymanFinance
                     Memo = "Second paycheck of February",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 2
+                    CategoryId = 3
                 });
 
                 // 3I
@@ -2687,7 +2687,7 @@ namespace LaymanFinance
                     Memo = "Won a bet on the Man City-Man U game.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
                 // 4I
@@ -2701,7 +2701,7 @@ namespace LaymanFinance
                     Memo = "Made some money on the TSLA stock bounceback.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 1
+                    CategoryId = 2
                 });
 
                 // 5I
@@ -2715,7 +2715,7 @@ namespace LaymanFinance
                     Memo = "Lyft payout.",
                     IsInflow = true,
                     IsOutlay = false,
-                    CategoryId = 18
+                    CategoryId = 9
                 });
 
 
