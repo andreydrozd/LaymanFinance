@@ -9,7 +9,7 @@ namespace LaymanFinance
 {
     internal class DbInitializer
     {
-        internal static void Initialize(AndreyTestContext context)
+        internal static void Initialize(LaymanFinanceContext context)
         {
             //Before "seeding," apply any existing migrations.
             context.Database.Migrate();

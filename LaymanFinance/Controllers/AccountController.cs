@@ -17,9 +17,9 @@ namespace LaymanFinance.Controllers
     {
         private SignInManager<ApplicationUser> _signInManager;
         private SendGridClient _sendGridClient;
-        private AndreyTestContext _context;
+        private LaymanFinanceContext _context;
 
-        public AccountController(SignInManager<ApplicationUser> signInManager, SendGridClient sendGridClient, AndreyTestContext context)
+        public AccountController(SignInManager<ApplicationUser> signInManager, SendGridClient sendGridClient, LaymanFinanceContext context)
         {
             _signInManager = signInManager;
             _sendGridClient = sendGridClient;

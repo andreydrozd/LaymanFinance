@@ -20,8 +20,8 @@ namespace LaymanFinance.Controllers
 {
     public class SmsController : TwilioController
     {
-        private readonly AndreyTestContext _context;
-        public SmsController(AndreyTestContext context)
+        private readonly LaymanFinanceContext _context;
+        public SmsController(LaymanFinanceContext context)
         {
             _context = context;
         }

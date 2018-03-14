@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace LaymanFinance.Migrations.AndreyTest
+namespace LaymanFinance.Migrations
 {
-    [DbContext(typeof(AndreyTestContext))]
-    [Migration("20180226193040_ModifiedCategory")]
-    partial class ModifiedCategory
+    [DbContext(typeof(LaymanFinanceContext))]
+    [Migration("20180314172248_FreshStart")]
+    partial class FreshStart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,8 +35,6 @@ namespace LaymanFinance.Migrations.AndreyTest
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FavoriteColor");
 
                     b.Property<string>("FirstName");
 
@@ -83,7 +81,13 @@ namespace LaymanFinance.Migrations.AndreyTest
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("BudgetedAmount");
+                    b.Property<string>("CardImageUrl");
+
+                    b.Property<bool>("ForInflows");
+
+                    b.Property<bool>("ForOutlays");
+
+                    b.Property<bool?>("IsDiscretionary");
 
                     b.Property<string>("Name");
 
@@ -92,7 +96,7 @@ namespace LaymanFinance.Migrations.AndreyTest
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("LaymanFinance.Models.Inflow", b =>
+            modelBuilder.Entity("LaymanFinance.Models.Transaction", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,7 +106,7 @@ namespace LaymanFinance.Migrations.AndreyTest
                         .HasColumnType("money");
 
                     b.Property<int>("CategoryId")
-                        .HasColumnName("CategoryID");
+                        .HasColumnName("CategoryId");
 
                     b.Property<DateTime>("DateEntered")
                         .ValueGeneratedOnAdd()
@@ -110,201 +114,52 @@ namespace LaymanFinance.Migrations.AndreyTest
                         .HasDefaultValueSql("(getdate())");
 
                     b.Property<DateTime?>("DateModified")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateOccurred")
                         .HasColumnType("date");
 
-                    b.Property<string>("Memo")
-                        .HasMaxLength(160);
+                    b.Property<bool>("IsInflow");
 
-                    b.Property<string>("Payor")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Inflow");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
-
-                    b.Property<DateTime>("DateCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<DateTime?>("DateModified")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("money");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.Outlay", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("money");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnName("CategoryID");
-
-                    b.Property<DateTime>("DateEntered")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<DateTime?>("DateModified")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<DateTime>("DateOccurred")
-                        .HasColumnType("date");
+                    b.Property<bool>("IsOutlay");
 
                     b.Property<string>("Memo")
                         .IsRequired()
                         .HasMaxLength(160);
 
-                    b.Property<string>("Payee")
+                    b.Property<string>("Source")
                         .IsRequired()
                         .HasMaxLength(50);
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Outlay");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Transaction");
                 });
 
-            modelBuilder.Entity("LaymanFinance.Models.Promo", b =>
+            modelBuilder.Entity("LaymanFinance.Models.UserCategory", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.Property<string>("ApplicationUserId");
 
-                    b.Property<decimal>("PercentageOff")
-                        .HasColumnType("decimal(18, 0)");
+                    b.Property<decimal>("BudgetedAmount");
+
+                    b.Property<int?>("CategoryId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Promo");
-                });
+                    b.HasIndex("ApplicationUserId");
 
-            modelBuilder.Entity("LaymanFinance.Models.Service", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
+                    b.HasIndex("CategoryId");
 
-                    b.Property<string>("DescriptionOne")
-                        .IsRequired()
-                        .HasMaxLength(160);
-
-                    b.Property<string>("DescriptionThree")
-                        .HasMaxLength(160);
-
-                    b.Property<string>("DescriptionTwo")
-                        .HasMaxLength(160);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("money");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Service");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.ServiceDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
-
-                    b.Property<DateTime>("BeginDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<int>("PromoId")
-                        .HasColumnName("PromoID");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnName("ServiceID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PromoId");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("ServiceDetail");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.Testimonial", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ID");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnName("ImageURL")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnName("ServiceID");
-
-                    b.Property<string>("TextOne")
-                        .IsRequired()
-                        .HasMaxLength(160);
-
-                    b.Property<string>("TextThree")
-                        .HasMaxLength(160);
-
-                    b.Property<string>("TextTwo")
-                        .HasMaxLength(160);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("Testimonial");
+                    b.ToTable("UserCategories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -415,41 +270,28 @@ namespace LaymanFinance.Migrations.AndreyTest
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("LaymanFinance.Models.Inflow", b =>
+            modelBuilder.Entity("LaymanFinance.Models.Transaction", b =>
                 {
                     b.HasOne("LaymanFinance.Models.Category", "Category")
-                        .WithMany("Inflow")
+                        .WithMany("Transaction")
                         .HasForeignKey("CategoryId")
-                        .HasConstraintName("FK_Inflow_Category");
+                        .HasConstraintName("FK_Transaction_Category");
+
+                    b.HasOne("LaymanFinance.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Transaction")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_Transaction_User");
                 });
 
-            modelBuilder.Entity("LaymanFinance.Models.Outlay", b =>
+            modelBuilder.Entity("LaymanFinance.Models.UserCategory", b =>
                 {
+                    b.HasOne("LaymanFinance.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("UserCategories")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("LaymanFinance.Models.Category", "Category")
-                        .WithMany("Outlay")
-                        .HasForeignKey("CategoryId")
-                        .HasConstraintName("FK_Outlay_Category");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.ServiceDetail", b =>
-                {
-                    b.HasOne("LaymanFinance.Models.Promo", "Promo")
-                        .WithMany("ServiceDetail")
-                        .HasForeignKey("PromoId")
-                        .HasConstraintName("FK_ServiceDetail_Promo");
-
-                    b.HasOne("LaymanFinance.Models.Service", "Service")
-                        .WithMany("ServiceDetail")
-                        .HasForeignKey("ServiceId")
-                        .HasConstraintName("FK_ServiceDetail_Service");
-                });
-
-            modelBuilder.Entity("LaymanFinance.Models.Testimonial", b =>
-                {
-                    b.HasOne("LaymanFinance.Models.Service", "Service")
-                        .WithMany("Testimonial")
-                        .HasForeignKey("ServiceId")
-                        .HasConstraintName("FK_Testimonial_Service");
+                        .WithMany("UserCategory")
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

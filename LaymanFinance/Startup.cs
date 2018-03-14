@@ -42,13 +42,13 @@ namespace LaymanFinance
             services.Configure<Models.ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.AddOptions();
 
-            services.AddDbContext<AndreyTestContext>(options =>
+            services.AddDbContext<LaymanFinanceContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 sqlOptions => sqlOptions.MigrationsAssembly(this.GetType().Assembly.FullName))
             );
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<AndreyTestContext>()
+                .AddEntityFrameworkStores<LaymanFinanceContext>()
                 .AddDefaultTokenProviders();
 
             services.AddTransient<SendGrid.SendGridClient>((x) =>
@@ -68,7 +68,7 @@ namespace LaymanFinance
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         // This is where middleware is called and configured.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AndreyTestContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, LaymanFinanceContext context)
         {
             if (env.IsDevelopment())
             {

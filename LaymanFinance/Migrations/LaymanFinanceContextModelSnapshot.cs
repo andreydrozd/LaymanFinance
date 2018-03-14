@@ -8,13 +8,12 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace LaymanFinance.Migrations.AndreyTest
+namespace LaymanFinance.Migrations
 {
-    [DbContext(typeof(AndreyTestContext))]
-    [Migration("20180314031527_CategoryImgUrl")]
-    partial class CategoryImgUrl
+    [DbContext(typeof(LaymanFinanceContext))]
+    partial class LaymanFinanceContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

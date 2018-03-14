@@ -6,15 +6,15 @@ using LaymanFinance.Models;
 
 namespace LaymanFinance.Models
 {
-    public partial class AndreyTestContext : IdentityDbContext<ApplicationUser>
+    public partial class LaymanFinanceContext : IdentityDbContext<ApplicationUser>
     {
 
-        public AndreyTestContext() : base()
+        public LaymanFinanceContext() : base()
         {
 
         }
 
-        public AndreyTestContext(DbContextOptions options) : base(options)
+        public LaymanFinanceContext(DbContextOptions options) : base(options)
         {
 
         }

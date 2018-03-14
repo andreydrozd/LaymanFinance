@@ -12,8 +12,8 @@ namespace LaymanFinance.Controllers
 {
     public class DashboardController : Controller
     {
-        private AndreyTestContext _context;
-        public DashboardController(AndreyTestContext context)
+        private LaymanFinanceContext _context;
+        public DashboardController(LaymanFinanceContext context)
         {
             _context = context;
         }

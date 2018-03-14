@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace LaymanFinance.Migrations.AndreyTest
+namespace LaymanFinance.Migrations
 {
-    public partial class FirstEFMigration : Migration
+    public partial class FreshStart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,6 @@ namespace LaymanFinance.Migrations.AndreyTest
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
-                    FavoriteColor = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
@@ -57,60 +56,15 @@ namespace LaymanFinance.Migrations.AndreyTest
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ActivityAmount = table.Column<decimal>(nullable: true),
-                    AvailableAmount = table.Column<decimal>(nullable: true),
-                    BudgetedAmount = table.Column<decimal>(nullable: false),
+                    CardImageUrl = table.Column<string>(nullable: true),
+                    ForInflows = table.Column<bool>(nullable: false),
+                    ForOutlays = table.Column<bool>(nullable: false),
+                    IsDiscretionary = table.Column<bool>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DateCreated = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    DateModified = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "(getdate())"),
-                    Total = table.Column<decimal>(type: "money", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Promo",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Code = table.Column<string>(maxLength: 100, nullable: false),
-                    PercentageOff = table.Column<decimal>(type: "decimal(18, 0)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Promo", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Service",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DescriptionOne = table.Column<string>(maxLength: 160, nullable: false),
-                    DescriptionThree = table.Column<string>(maxLength: 160, nullable: true),
-                    DescriptionTwo = table.Column<string>(maxLength: 160, nullable: true),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Price = table.Column<decimal>(type: "money", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Service", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -220,105 +174,63 @@ namespace LaymanFinance.Migrations.AndreyTest
                 });
 
             migrationBuilder.CreateTable(
-                name: "Inflow",
+                name: "Transaction",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
-                    CategoryID = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
                     DateEntered = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    DateModified = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "(getdate())"),
+                    DateModified = table.Column<DateTime>(type: "datetime", nullable: true),
                     DateOccurred = table.Column<DateTime>(type: "date", nullable: false),
-                    Memo = table.Column<string>(maxLength: 160, nullable: true),
-                    Payor = table.Column<string>(maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Inflow", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Inflow_Category",
-                        column: x => x.CategoryID,
-                        principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Outlay",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Amount = table.Column<decimal>(type: "money", nullable: false),
-                    CategoryID = table.Column<int>(nullable: false),
-                    DateEntered = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    DateModified = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "(getdate())"),
-                    DateOccurred = table.Column<DateTime>(type: "date", nullable: false),
+                    IsInflow = table.Column<bool>(nullable: false),
+                    IsOutlay = table.Column<bool>(nullable: false),
                     Memo = table.Column<string>(maxLength: 160, nullable: false),
-                    Payee = table.Column<string>(maxLength: 50, nullable: false)
+                    Source = table.Column<string>(maxLength: 50, nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Outlay", x => x.ID);
+                    table.PrimaryKey("PK_Transaction", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Outlay_Category",
-                        column: x => x.CategoryID,
+                        name: "FK_Transaction_Category",
+                        column: x => x.CategoryId,
                         principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Transaction_User",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ServiceDetail",
+                name: "UserCategories",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BeginDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    PromoID = table.Column<int>(nullable: false),
-                    ServiceID = table.Column<int>(nullable: false)
+                    ApplicationUserId = table.Column<string>(nullable: true),
+                    BudgetedAmount = table.Column<decimal>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ServiceDetail", x => x.ID);
+                    table.PrimaryKey("PK_UserCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ServiceDetail_Promo",
-                        column: x => x.PromoID,
-                        principalTable: "Promo",
-                        principalColumn: "ID",
+                        name: "FK_UserCategories_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ServiceDetail_Service",
-                        column: x => x.ServiceID,
-                        principalTable: "Service",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Testimonial",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ImageURL = table.Column<string>(maxLength: 100, nullable: false),
-                    Location = table.Column<string>(maxLength: 50, nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    ServiceID = table.Column<int>(nullable: false),
-                    TextOne = table.Column<string>(maxLength: 160, nullable: false),
-                    TextThree = table.Column<string>(maxLength: 160, nullable: true),
-                    TextTwo = table.Column<string>(maxLength: 160, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Testimonial", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Testimonial_Service",
-                        column: x => x.ServiceID,
-                        principalTable: "Service",
-                        principalColumn: "ID",
+                        name: "FK_UserCategories_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -362,29 +274,24 @@ namespace LaymanFinance.Migrations.AndreyTest
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inflow_CategoryID",
-                table: "Inflow",
-                column: "CategoryID");
+                name: "IX_Transaction_CategoryId",
+                table: "Transaction",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Outlay_CategoryID",
-                table: "Outlay",
-                column: "CategoryID");
+                name: "IX_Transaction_UserId",
+                table: "Transaction",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceDetail_PromoID",
-                table: "ServiceDetail",
-                column: "PromoID");
+                name: "IX_UserCategories_ApplicationUserId",
+                table: "UserCategories",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceDetail_ServiceID",
-                table: "ServiceDetail",
-                column: "ServiceID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Testimonial_ServiceID",
-                table: "Testimonial",
-                column: "ServiceID");
+                name: "IX_UserCategories_CategoryId",
+                table: "UserCategories",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -405,19 +312,10 @@ namespace LaymanFinance.Migrations.AndreyTest
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Inflow");
+                name: "Transaction");
 
             migrationBuilder.DropTable(
-                name: "Order");
-
-            migrationBuilder.DropTable(
-                name: "Outlay");
-
-            migrationBuilder.DropTable(
-                name: "ServiceDetail");
-
-            migrationBuilder.DropTable(
-                name: "Testimonial");
+                name: "UserCategories");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -427,12 +325,6 @@ namespace LaymanFinance.Migrations.AndreyTest
 
             migrationBuilder.DropTable(
                 name: "Category");
-
-            migrationBuilder.DropTable(
-                name: "Promo");
-
-            migrationBuilder.DropTable(
-                name: "Service");
         }
     }
 }

@@ -12,9 +12,9 @@ namespace LaymanFinance.Controllers
 {
     public class ApplicationUsersController : Controller
     {
-        private readonly AndreyTestContext _context;
+        private readonly LaymanFinanceContext _context;
 
-        public ApplicationUsersController(AndreyTestContext context)
+        public ApplicationUsersController(LaymanFinanceContext context)
         {
             _context = context;
         }
