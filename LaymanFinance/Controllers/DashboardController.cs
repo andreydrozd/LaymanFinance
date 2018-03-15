@@ -61,10 +61,11 @@ namespace LaymanFinance.Controllers
                     .OrderByDescending(x => x.DateOccurred)
                     .ToList(),
                 OutlayTotals = JsonConvert.SerializeObject(userTransactions
-                                .Transaction.Where(x => x.IsOutlay)
+                                .Transaction.Where(x => x.IsOutlay && (x.DateOccurred > startPeriod) && (x.DateOccurred < endPeriod))
                                 .GroupBy(x => x.Category.Name)
                                 .Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })),
                 OutlayTotalsBudget = JsonConvert.SerializeObject(userCategories
+                                        .Where(x => x.Category.ForOutlays)
                                         .GroupBy(x => x.Category.Name)
                                         .Select(x => new { Category = x.Key, Amount = x.Sum(y => y.BudgetedAmount) })),
                 TransactionTotals = JsonConvert.SerializeObject(userTransactions

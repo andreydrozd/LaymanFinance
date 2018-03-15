@@ -84,11 +84,11 @@
 
     // For pie chart of budgeted outlays
     var outlayTotalsBudget = @Html.Raw(Model.OutlayTotalsBudget);
-    var outlayTotalsBudgetCount = inflowTotals.length;
+    var outlayTotalsBudgetCount = outlayTotalsBudget.length;
 
     // For bar graph of last six months of spending.
 
-    // Charts
+    // Actualy spending pie chart
     var ctx = document.getElementById("barChart");
     var myChart = new Chart(ctx, {
         type: 'pie',
@@ -121,21 +121,22 @@
         }
     });
 
+    // Budget pie chart
     var ctx = document.getElementById("otherBarChart");
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: inflowTotals.map((x) => x.Category),
+            labels: outlayTotalsBudget.map((x) => x.Category),
             datasets: [{
                 label: 'How the pie should look for this period',
-                data: inflowTotals.map((x) => x.Amount),
-                backgroundColor: inflowTotals.map((item, index) => {
-                    var hue = 360 * ((index) / inflowTotalsCount);
+                data: outlayTotalsBudget.map((x) => x.Amount),
+                backgroundColor: outlayTotalsBudget.map((item, index) => {
+                    var hue = 360 * ((index) / outlayTotalsBudgetCount);
                     return 'hsla(' + hue + ', 70%, 70%, 0.4)'
                 })
                 ,
-                borderColor: inflowTotals.map((item, index) => {
-                    var hue = 360 * ((index) / inflowTotalsCount);
+                borderColor: outlayTotalsBudget.map((item, index) => {
+                    var hue = 360 * ((index) / outlayTotalsBudgetCount);
                     return 'hsla(' + hue + ', 50%, 50%, 0.4)'
                 })
                 ,
