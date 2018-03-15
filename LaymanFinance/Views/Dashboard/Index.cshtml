@@ -6,60 +6,67 @@
 <div class="container-fluid">
     <div class="row">
         <!--Inputs for which month's transactions you want to see. Goes 6 months back.-->
-        <div>
+        <h2>
+            Transactions for @ViewData["Month"] @ViewData["Year"]
+        </h2>
+        <div id="date-container">
             @for (int i = 0; i > -6; i--)
             {
                 <a asp-route-month="@DateTime.Now.AddMonths(i).Month" asp-route-year="@DateTime.Now.AddMonths(i).Year">@DateTime.Now.AddMonths(i).ToString("MMM-yy")</a>
             }
         </div>
     </div>
-    <div class="row">
-        <div class="row">
-            <div class="col-2">
-                <h4>Date</h4>
-            </div>
-            <div class="col-2">
-                <h4><a asp-route-sort="amount">Amount</a></h4>
-            </div>
-            <div class="col-2">
-                <h4><a asp-route-sort="source">Source</a></h4>
-            </div>
-            <div class="col-2">
-                <h4>Memo</h4>
-            </div>
-            <div class="col-2">
-                <h4>Category</h4>
-            </div>
-        </div>
-        @foreach (var transaction in Model.Transactions)
-        {
-            <div class="row">
-                <div class="col-2">
-                    <p>@transaction.DateOccurred.ToShortDateString()</p>
-                </div>
-                <div class="col-2">
-                    <p>@transaction.Amount.ToString("c")</p>
-                    @*
-                        This is done when the model property is nullable.
-                        <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
-                    *@
-                </div>
-                <div class="col-2">
-                    <p>@transaction.Source</p>
-                </div>
-                <div class="col-2">
-                    <p>@transaction.Memo</p>
-                </div>
-                <div class="col-2">
-                    <p>@transaction.Category.Name</p>
-                </div>
-                <div class="col-2">
-                    <a asp-action="Edit" asp-route-id="@transaction.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@transaction">Delete</a>
-                </div>
-            </div>
-        }
-    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <h4>Date</h4>
+                </th>
+                <th>
+                    <h4><a asp-route-sort="amount">Amount</a></h4>
+                </th>
+                <th>
+                    <h4><a asp-route-sort="source">Source</a></h4>
+                </th>
+                <th >
+                    <h4>Memo</h4>
+                </th>
+                <th>
+                    <h4>Category</h4>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model.Transactions)
+    {
+        <tr>
+            <td>
+                <p>@transaction.DateOccurred.ToShortDateString()</p>
+            </td>
+            <td>
+                <p>@transaction.Amount.ToString("c")</p>
+                @*
+            This is done when the model property is nullable.
+            <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
+                *@
+            </td>
+            <td>
+                <p>@transaction.Source</p>
+            </td>
+            <td>
+                <p>@transaction.Memo</p>
+            </td>
+            <td>
+                <p>@transaction.Category.Name</p>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@transaction.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@transaction">Delete</a>
+            </td>
+        </tr>
+}
+        </tbody>
+    </table>
     <div class="row chart-container">
         <div class="col-6"><canvas id="barChart" width="400" height="400"></canvas></div>
         <div class="col-6"><canvas id="otherBarChart" width="400" height="400"></canvas></div>
@@ -75,16 +82,16 @@
     var outlayTotals = @Html.Raw(Model.OutlayTotals);
     var outlayTotalsCount = outlayTotals.length;
 
-    // For bar graph of acutal 
+    // For pie chart of budgeted outlays
+    var outlayTotalsBudget = @Html.Raw(Model.OutlayTotalsBudget);
+    var outlayTotalsBudgetCount = inflowTotals.length;
 
-    // For pie chart of actual inflows
-    var inflowTotals = @Html.Raw(Model.InflowTotals);
-    var inflowTotalsCount = inflowTotals.length;
+    // For bar graph of last six months of spending.
 
     // Charts
     var ctx = document.getElementById("barChart");
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
             labels: outlayTotals.map((x) => x.Category),
             datasets: [{
@@ -116,7 +123,7 @@
 
     var ctx = document.getElementById("otherBarChart");
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
             labels: inflowTotals.map((x) => x.Category),
             datasets: [{
@@ -145,9 +152,5 @@
             }
         }
     });
-
-    
-
-
 </script>
 }

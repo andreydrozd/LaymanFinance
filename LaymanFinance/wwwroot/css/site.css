@@ -70,6 +70,12 @@ form > label {
     width: 50vw
 }
 
+#date-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 
 /* ENTER TRANSACTION */
 .categories-select{
