@@ -4,19 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Layman Finance</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <title>Layman Finance</title>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body id="home-bg">
+<body>
     <div asp-validation-summary="All"></div>
     <div id="user-form">
-        <form asp-action="register" asp-controller="account" method="post" class="login-register">
+        <form asp-action="register" asp-controller="account" method="post">
             <label>Username</label>
             <input type="text" name="username" required />
             <label>Password</label>
             <input type="password" name="password" required />
-            <input type="submit" value="Register" class="btn btn-primary register-submit-btn" />
+            <div class="account-related-btns">
+                <input type="submit" value="Register" class="btn" />
+            </div>
         </form>
     </div>
 </body>

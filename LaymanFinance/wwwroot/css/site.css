@@ -7,13 +7,36 @@
     background: #00FF48;
 }
 
+.btn-my-edit, input[type="submit"] {
+    margin: 0.5em 1em 0.5em 0em;
+    width: 10em;
+    background-color: #0AB239;
+    border: 1px solid #CC7F14;
+    color: #fff;
+    padding: 0.5em;
+    font-size: 1.50em;
+}
+
+.btn-my-edit:hover, input[type="submit"]:hover {
+    background-color: #41FF77;
+    border: 1px solid #CC7F14;
+    color: #fff;
+}
+
+.account-related-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+
 /* SPLASH PAGE */
 #splash-page-container {
     background: #F5F5F5;
     height: 100vh;
 }
 
-.hero-text-box {
+#hero-text-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -21,20 +44,9 @@
     width: 100%;
 }
 
-.btn-full:link, input[type="submit"] {
-    background-color: #0AB239;
-    border: 1px solid #CC7F14;
-    color: #fff;
-    padding: 1em 3em;
+#btn-container {
+    margin-top: 1em;
 }
-
-.btn-full:hover, input[type="submit"] {
-    background-color: #41FF77;
-    border: 1px solid #CC7F14;
-    color: #fff;
-    padding: 1em 3em;
-}
-
 
 /* LOGIN/REGISTER */
 #user-form {
@@ -45,7 +57,7 @@
     width: 30em;
     height: auto;
     padding: 1.5em;
-    background-color: #fff;
+    background-color: #FFF;
     border-radius: .4em;
     box-shadow: 0 0 2em 0 rgba(0,0,0,0.25);
 }
@@ -53,22 +65,13 @@
 form > input {
     display: block;
     width: 100%;
-    font-size: 1.25em;
+    font-size: 1.50em;
 }
 
 form > label {
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: 0.5em;
-}
-
-.register-submit-btn {
-    margin-top: 0.5em;
-    background: #2c97ad;
-    font-size: 1.5em;
-}
-
-.register-submit-btn:hover {
-    background-color: #008caf;
 }
 
 /* DASHBOARD */
