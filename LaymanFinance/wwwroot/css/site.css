@@ -1,30 +1,38 @@
 ﻿/* GLOBAL */
-#home-bg {
-    background: #2c97ad;
+.brand-color-dark {
+    background: #00B233;
 }
 
-/* NAVBAR */
-
-li.link-active a,
-li.link-active a:hover,
-li.link-active a:focus {
-    background-color: #4189C7;
-    color: white;
+.brand-color-light {
+    background: #00FF48;
 }
 
-#sidebar {
+/* SPLASH PAGE */
+#splash-page-container {
+    background: #F5F5F5;
     height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    /* Import and mods of Bootstrap navbar, navbar-expand and col-2  */
-    display: flex;
-    flex: 0 0 25%;
-    max-width: 25%;
+}
+
+.hero-text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    padding: 0.5rem 1rem;
-    flex-flow: column wrap;
+}
+
+.btn-full:link, input[type="submit"] {
+    background-color: #0AB239;
+    border: 1px solid #CC7F14;
+    color: #fff;
+    padding: 1em 3em;
+}
+
+.btn-full:hover, input[type="submit"] {
+    background-color: #41FF77;
+    border: 1px solid #CC7F14;
+    color: #fff;
+    padding: 1em 3em;
 }
 
 
@@ -33,13 +41,13 @@ li.link-active a:focus {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     width: 30em;
     height: auto;
-    margin-left: -15em;
     padding: 1.5em;
     background-color: #fff;
     border-radius: .4em;
-    box-shadow: 0 0 4em 0 rgba(0,0,0,0.25);
+    box-shadow: 0 0 2em 0 rgba(0,0,0,0.25);
 }
 
 form > input {
@@ -74,6 +82,29 @@ form > label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+/* NAVBAR */
+li.link-active a,
+li.link-active a:hover,
+li.link-active a:focus {
+    background-color: #4189C7;
+    color: white;
+}
+
+#sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* Import and mods of Bootstrap navbar, navbar-expand and col-2  */
+    display: flex;
+    flex: 0 0 25%;
+    max-width: 25%;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    flex-flow: column wrap;
 }
 
 
