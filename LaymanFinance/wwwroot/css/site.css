@@ -81,33 +81,56 @@ form > label {
     width: 50vw
 }
 
-#date-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.dropdown {
+    margin: 2em 0em;
 }
 
+/* TRANSACTIONS/OUTLAYS/INFLOWS*/
+fieldset {
+    border: 3px solid #00B233;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+fieldset legend {
+    padding: 5px 10px;
+    font-size: 2em;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 0;
+    width: inherit;
+}
+
+
 /* NAVBAR */
-li.link-active a,
-li.link-active a:hover,
-li.link-active a:focus {
-    background-color: #4189C7;
-    color: white;
+.navbar-brand-my-edit {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 2.00rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.navbar-brand-my-edit:hover {
+    text-decoration: none;
+    color: #00B233;
 }
 
 #sidebar {
-    height: 100vh;
     position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
-    z-index: 1;
-    /* Import and mods of Bootstrap navbar, navbar-expand and col-2  */
-    display: flex;
-    flex: 0 0 25%;
-    max-width: 25%;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    flex-flow: column wrap;
+    z-index: 100;
+    padding-left: 1em;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    /*Do I need all this?*/
+    position: sticky;
+    height: 100vh;
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 

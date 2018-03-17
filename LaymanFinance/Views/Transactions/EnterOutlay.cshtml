@@ -24,7 +24,7 @@
         </div>
         <div>
             <label for="transaction.Amount">Amount</label>
-            <input class="form-control" type="number" name="transaction.Amount" value="" required />
+            <input class="form-control" type="number" step="0.01" name="transaction.Amount" value="" required />
             <span class="invalid-feedback">How much was the inflow?</span>
         </div>
         <div>
@@ -41,7 +41,7 @@
             <div class="categories-select">
                 <label>Category</label>
                 <select name="SelectedCategory" class="form-control" required>
-                    <option value="">Select an Outlay Category</option>
+                    <option value="">Select a Category</option>
                     @foreach (var cat in Model.OutlayCategories)
                     {
                         <option value="@cat">@cat</option>
@@ -52,13 +52,7 @@
         </div>
         <input type="submit" />
     </form>
-
-    <form asp-action="index" asp-controller="transactions" method="post">
-        <input type="submit" value="Show me my transactions." />
-    </form>
 </div>
-
-
 
 @section Scripts {
     <script type="text/javascript">

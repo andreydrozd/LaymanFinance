@@ -4,20 +4,26 @@
 }
 
 <div class="container-fluid">
-    <div class="row">
-        <!--Inputs for which month's transactions you want to see. Goes 6 months back.-->
-        <h2>
-            Transactions for @ViewData["Month"] @ViewData["Year"]
-        </h2>
-        <div id="date-container">
+    <h1 class="display-4">
+        Transactions for @ViewData["Month"] @ViewData["Year"]
+    </h1>
+
+
+    <!--Inputs for which month's transactions you want to see. Goes 6 months back.-->
+    <div class="dropdown dropright">
+        <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @ViewData["Month"] @ViewData["Year"]
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             @for (int i = 0; i > -6; i--)
             {
-                <a asp-route-month="@DateTime.Now.AddMonths(i).Month" asp-route-year="@DateTime.Now.AddMonths(i).Year">@DateTime.Now.AddMonths(i).ToString("MMM-yy")</a>
+                <a asp-route-month="@DateTime.Now.AddMonths(i).Month" asp-route-year="@DateTime.Now.AddMonths(i).Year" class="dropdown-item">@DateTime.Now.AddMonths(i).ToString("MMM-yy")</a>
             }
         </div>
     </div>
-    <table class="table table-striped">
-        <thead>
+
+    <table class="table table-hover table-sm">
+        <thead class="thead-light">
             <tr>
                 <th>
                     <h4>Date</h4>
@@ -28,43 +34,46 @@
                 <th>
                     <h4><a asp-route-sort="source">Source</a></h4>
                 </th>
-                <th >
+                <th>
                     <h4>Memo</h4>
                 </th>
                 <th>
                     <h4>Category</h4>
                 </th>
+                <th>
+                    <h4>Modify</h4>
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var transaction in Model.Transactions)
-    {
-        <tr>
-            <td>
-                <p>@transaction.DateOccurred.ToShortDateString()</p>
-            </td>
-            <td>
-                <p>@transaction.Amount.ToString("c")</p>
-                @*
-            This is done when the model property is nullable.
-            <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
-                *@
-            </td>
-            <td>
-                <p>@transaction.Source</p>
-            </td>
-            <td>
-                <p>@transaction.Memo</p>
-            </td>
-            <td>
-                <p>@transaction.Category.Name</p>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@transaction.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@transaction">Delete</a>
-            </td>
-        </tr>
-}
+            {
+                <tr>
+                    <td>
+                        @transaction.DateOccurred.ToShortDateString()
+                    </td>
+                    <td>
+                        @transaction.Amount.ToString("c")
+                        @*
+                            This is done when the model property is nullable.
+                            <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
+                        *@
+                    </td>
+                    <td>
+                        @transaction.Source
+                    </td>
+                    <td>
+                        @transaction.Memo
+                    </td>
+                    <td>
+                        @transaction.Category.Name
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@transaction.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@transaction">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
     <div class="row chart-container">

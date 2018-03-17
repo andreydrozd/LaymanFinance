@@ -129,12 +129,6 @@ namespace LaymanFinance.Controllers
             return View(inflows);
         }
 
-        // GET: Transactions/Type
-        public IActionResult Type()
-        {
-            return View();
-        }
-
         // GET: Transactions/EnterInflow
         public IActionResult EnterInflow()
         {
@@ -164,6 +158,7 @@ namespace LaymanFinance.Controllers
             var transaction = model.Transaction;
             transaction.ApplicationUser = await _context.Users.FindAsync(userId);
             transaction.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
+            transaction.IsInflow = true;
             _context.Transaction.Add(transaction);
             _context.SaveChanges();
 
@@ -179,6 +174,7 @@ namespace LaymanFinance.Controllers
             var transaction = model.Transaction;
             transaction.ApplicationUser = await _context.Users.FindAsync(userId);
             transaction.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
+            transaction.IsOutlay = true;
             _context.Transaction.Add(transaction);
             _context.SaveChanges();
 
@@ -190,49 +186,6 @@ namespace LaymanFinance.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // GET: Transactions/Create
-        public IActionResult Create()
-        {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
-            return View();
-        }
-
-        // POST: Transactions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryId,UserId,DateOccurred,DateEntered,DateModified,Amount,Source,Memo,IsInflow,IsOutlay")] Transaction transaction)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(transaction);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", transaction.UserId);
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", transaction.CategoryId);
-            return View(transaction);
-        }
 
         // GET: Transactions/Edit/5
         public async Task<IActionResult> Edit(int? id)

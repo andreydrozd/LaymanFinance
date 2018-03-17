@@ -3,73 +3,71 @@
     ViewData["Title"] = "Outlays";
 }
 
-<div class="row">
-    <h2>Gaze at your outlays.</h2>
-    <div class="card">
-        <div class="card-header">Filter by Category</div>
-        <div class="card-body">
-            <form>
-                @foreach (string category in Model.Categories)
-                {
-                <input type="checkbox" value="@category" name="category" />@category
-                }
-                <input type="submit" />
-            </form>
-        </div>
-    </div>
+<div class="container-fluid">
+    <h6 class="display-4">Outlays</h6>
+
+    <form>
+        <fieldset>
+            <legend>Filter by:</legend>
+            @foreach (string category in Model.Categories)
+            {
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" value="@category" name="category" class="form-check-input" />@category
+                </div>
+            }
+        </fieldset>
+
+        <input type="submit" />
+    </form>
+
+    <table class="table table-hover table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    <h4>Date</h4>
+                </th>
+                <th>
+                    <h4><a asp-route-sort="amount">Amount</a></h4>
+                </th>
+                <th>
+                    <h4><a asp-route-sort="source">Source</a></h4>
+                </th>
+                <th>
+                    <h4>Memo</h4>
+                </th>
+                <th>
+                    <h4>Category</h4>
+                </th>
+                <th>
+                    <h4>Modify</h4>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var outlay in Model.Transactions)
+            {
+                <tr>
+                    <td>
+                        @outlay.DateOccurred.ToShortDateString()
+                    </td>
+                    <td>
+                        @outlay.Amount.ToString("c")
+                    </td>
+                    <td>
+                        @outlay.Source
+                    </td>
+                    <td>
+                        @outlay.Memo
+                    </td>
+                    <td>
+                        @outlay.Category.Name
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@outlay.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@outlay">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-
-<div class="row">
-    <div class="col-2">
-        <h5>Date</h5>
-    </div>
-    <div class="col-2">
-        <h5><a asp-route-sort="amount">Amount</a></h5>
-    </div>
-    <div class="col-2">
-        <h5><a asp-route-sort="source">Source</a></h5>
-    </div>
-    <div class="col-2">
-        <h5>Memo</h5>
-    </div>
-    <div class="col-2">
-        <h5>Category</h5>
-    </div>
-</div>
-
-@foreach (var outlay in Model.Transactions)
-{
-    <div class="row">
-        <div class="col-2">
-            <p>@outlay.DateOccurred.ToShortDateString()</p>
-        </div>
-        <div class="col-2">
-            <p>@outlay.Amount.ToString("c")</p>
-            @*
-                This is done when the model property is nullable.
-                <p>@(Model.Amount.HasValue ? @Model.Amount.Value.ToString("c") : "No Value")</p>
-            *@
-        </div>
-        <div class="col-2">
-            <p>@outlay.Source</p>
-        </div>
-        <div class="col-2">
-            <p>@outlay.Memo</p>
-        </div>
-        <div class="col-2">
-            <p>@outlay.Category.Name</p>
-        </div>
-        <div class="col-2">
-            <a asp-action="Edit" asp-route-id="@outlay.Id">Edit</a> |
-            <a asp-action="Delete" asp-route-id="@outlay.Id">Delete</a>
-        </div>
-    </div>
-}
-
-@section Scripts{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
-    <script type="text/javascript">
-        var outlayAllocation = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Transactions.GroupBy(x => x.Category.Name).Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })))');
-
-    </script>
-}
