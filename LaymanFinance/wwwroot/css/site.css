@@ -103,7 +103,12 @@ form > label {
 }
 
 .dropdown {
+    width: 50%;
     margin: 1em 0 0.75em 0;
+}
+
+h3.chart-headers{
+    text-align: center;
 }
 
 /* TRANSACTIONS/OUTLAYS/INFLOWS*/

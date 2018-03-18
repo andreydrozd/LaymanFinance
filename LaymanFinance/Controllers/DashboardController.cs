@@ -52,28 +52,26 @@ namespace LaymanFinance.Controllers
                     .Transaction.Where(x => x.DateOccurred > startPeriod && x.DateOccurred < endPeriod)
                     .OrderByDescending(x => x.DateOccurred)
                     .Take(count).ToList(),
-                TransactionsChart = userTransactions
-                    .Transaction.Where(x => x.DateOccurred > startPeriod && x.DateOccurred < endPeriod)
-                    .OrderByDescending(x => x.DateOccurred)
-                    .ToList(),
-                TransactionsGraph = userTransactions
-                    .Transaction.Where(x => x.DateOccurred > graphStartPeriod && x.DateOccurred < graphEndPeriod)
-                    .OrderByDescending(x => x.DateOccurred)
-                    .ToList(),
+                AcutalOutlays = userTransactions
+                    .Transaction.Where(x => x.DateOccurred > startPeriod && x.DateOccurred < endPeriod && x.IsOutlay)
+                    .Sum(x => x.Amount),
+                BudgetOutlays = userCategories
+                    .Where(x => x.Category.ForOutlays)
+                    .Sum(x => x.BudgetedAmount),
                 OutlayTotals = JsonConvert.SerializeObject(userTransactions
                                 .Transaction.Where(x => x.IsOutlay && (x.DateOccurred > startPeriod) && (x.DateOccurred < endPeriod))
+                                .OrderBy(x => x.Category.Name)
                                 .GroupBy(x => x.Category.Name)
                                 .Select(x => new { Category = x.Key, Amount = x.Sum(y => y.Amount) })),
                 OutlayTotalsBudget = JsonConvert.SerializeObject(userCategories
                                         .Where(x => x.Category.ForOutlays)
+                                        .OrderBy(x=> x.Category.Name)
                                         .GroupBy(x => x.Category.Name)
                                         .Select(x => new { Category = x.Key, Amount = x.Sum(y => y.BudgetedAmount) })),
                 TransactionTotals = JsonConvert.SerializeObject(userTransactions
                                     .Transaction.Where(x => x.DateOccurred > graphStartPeriod && x.DateOccurred < graphEndPeriod)
                                     .GroupBy(x => x.DateOccurred.Month)
                                     .Select(x => new { Month = x.Key, Amount = x.Sum(y => y.Amount) }))
-
-                // Categories = await _context.UserCategories.GroupBy(x => x.Category.Name);
             };
             return View(model);
         }

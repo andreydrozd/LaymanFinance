@@ -3,22 +3,26 @@
     ViewData["Title"] = "Account Information";
 }
 
-<h2 class="display-4-my-edit">Here's your account information, @Model.FirstName</h2>
-<hr />
-
-<h4>First Name</h4>
-<p>@Model.FirstName</p>
-
-<h4>Last Name</h4>
-<p>@Model.LastName</p>
-
-<h4>Email</h4>
-<p>@Model.Email</p>
-
-<h4>Phone Number</h4>
-<p>@Convert.ToInt64(Model.PhoneNumber).ToString("###-###-####")</p>
-
-<div id="btn-container">
-    <a asp-controller="account" asp-action="edit" class="btn btn-my-edit">Edit</a>
-    <a asp-controller="account" asp-action="index" class="btn btn-my-edit">Cancel</a>
+<div class="col-md-7">
+    <h2 class="display-4-my-edit">Here's your account information, @Model.FirstName</h2>
+    <hr />
 </div>
+
+<div class="col-md-3">
+    <h4>First Name</h4>
+    <p>@Model.FirstName</p>
+
+    <h4>Last Name</h4>
+    <p>@Model.LastName</p>
+
+    <h4>Email</h4>
+    <p>@Model.Email</p>
+
+    <h4>Phone Number</h4>
+    <p>@Convert.ToInt64(Model.PhoneNumber).ToString("###-###-####")</p>
+
+    <div id="btn-container">
+        <a asp-controller="account" asp-action="edit" class="btn btn-my-edit">Edit</a>
+    </div>
+</div>
+

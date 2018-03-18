@@ -76,9 +76,18 @@
             }
         </tbody>
     </table>
+    <hr />
     <div class="row chart-container">
-        <div class="col-6"><canvas id="barChart" width="400" height="400"></canvas></div>
-        <div class="col-6"><canvas id="otherBarChart" width="400" height="400"></canvas></div>
+        <div class="col-6">
+            <h3 class="chart-headers">Acutal Outlays: @Model.AcutalOutlays.ToString("c")</h3>
+            <hr />
+            <canvas id="pieChartActuals" width="400" height="400"></canvas>
+        </div>
+        <div class="col-6">
+            <h3 class="chart-headers">Budgeted Outlays: @Model.BudgetOutlays.ToString("c")</h3>
+            <hr />
+            <canvas id="pieChartBudget" width="400" height="400"></canvas>
+        </div>
     </div>
 
 </div>
@@ -87,18 +96,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script type="text/javascript">
 
-    // For pie chart of actual outlays
-    var outlayTotals = @Html.Raw(Model.OutlayTotals);
-    var outlayTotalsCount = outlayTotals.length;
-
     // For pie chart of budgeted outlays
     var outlayTotalsBudget = @Html.Raw(Model.OutlayTotalsBudget);
-    var outlayTotalsBudgetCount = outlayTotalsBudget.length;
+
+    // For pie chart of actual outlays
+    var outlayTotals = @Html.Raw(Model.OutlayTotals);
+    // Inserts Categories with a $0 that haven't been applied on the current month
+    for (var i = 0; i < outlayTotalsBudget.length; i++) {
+        if (outlayTotals[i] == undefined) {
+            var addFromBudget = { "Category": outlayTotalsBudget[i].Category, "Amount": 0 };
+            outlayTotals.push(addFromBudget)
+        }
+        if (outlayTotals[i].Category != outlayTotalsBudget[i].Category) {
+            var addObject = { "Category": outlayTotalsBudget[i].Category, "Amount": 0 };
+            outlayTotals.splice(i, 0, addObject);
+        } else {
+            console.log("All done.");
+        }
+    }
+
+    // For dividing up the pie consistently, since some months don't have all of the categories in transactions.
+    var pieDivider = outlayTotalsBudget.length;
+
 
     // For bar graph of last six months of spending.
 
     // Actualy spending pie chart
-    var ctx = document.getElementById("barChart");
+    var ctx = document.getElementById("pieChartActuals");
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -107,12 +131,12 @@
                 label: 'How the pie actually looks for this period',
                 data: outlayTotals.map((x) => x.Amount),
                 backgroundColor: outlayTotals.map((item, index) => {
-                        var hue = 360 * ((index) / outlayTotalsCount);
+                        var hue = 360 * ((index) / pieDivider);
                         return 'hsla(' + hue + ', 70%, 70%, 0.4)'
                     })
                 ,
                 borderColor: outlayTotals.map((item, index) => {
-                        var hue = 360 * ((index) / outlayTotalsCount);
+                        var hue = 360 * ((index) / pieDivider);
                         return 'hsla(' + hue + ', 50%, 50%, 0.4)'
                     })
                 ,
@@ -120,18 +144,11 @@
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
         }
     });
 
     // Budget pie chart
-    var ctx = document.getElementById("otherBarChart");
+    var ctx = document.getElementById("pieChartBudget");
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -140,12 +157,12 @@
                 label: 'How the pie should look for this period',
                 data: outlayTotalsBudget.map((x) => x.Amount),
                 backgroundColor: outlayTotalsBudget.map((item, index) => {
-                    var hue = 360 * ((index) / outlayTotalsBudgetCount);
+                    var hue = 360 * ((index) / pieDivider);
                     return 'hsla(' + hue + ', 70%, 70%, 0.4)'
                 })
                 ,
                 borderColor: outlayTotalsBudget.map((item, index) => {
-                    var hue = 360 * ((index) / outlayTotalsBudgetCount);
+                    var hue = 360 * ((index) / pieDivider);
                     return 'hsla(' + hue + ', 50%, 50%, 0.4)'
                 })
                 ,
@@ -153,13 +170,6 @@
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
         }
     });
 </script>
