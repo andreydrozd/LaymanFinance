@@ -69,8 +69,8 @@
                         @transaction.Category.Name
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@transaction.Id">Edit</a> |
-                        <a asp-action="Delete" asp-route-id="@transaction">Delete</a>
+                        <a asp-controller="Transactions" asp-action="Edit" asp-route-id="@transaction.Id">Edit</a> |
+                        <a asp-controller="Transactions" asp-action="Delete" asp-route-id="@transaction">Delete</a>
                     </td>
                 </tr>
             }

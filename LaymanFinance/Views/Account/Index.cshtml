@@ -1,10 +1,24 @@
 ﻿@model ApplicationUser
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "Account Information";
 }
 
-<h1>This is where the edit user information will be.</h1>
+<h2 class="display-4-my-edit">Your account information, @Model.FirstName</h2>
+<hr />
+
+<h4>First Name</h4>
 <p>@Model.FirstName</p>
+
+<h4>Last Name</h4>
 <p>@Model.LastName</p>
+
+<h4>Email</h4>
 <p>@Model.Email</p>
-<p>@Model.PhoneNumber</p>
+
+<h4>Phone Number</h4>
+<p>@String.Format("{0: (###) ###-####}", @Model.PhoneNumber)</p>
+
+<div id="btn-container">
+    <a asp-controller="account" asp-action="edit" class="btn btn-my-edit">Edit</a>
+    <a asp-controller="account" asp-action="index" class="btn btn-my-edit">Cancel</a>
+</div>

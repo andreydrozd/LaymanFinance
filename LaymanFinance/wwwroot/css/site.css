@@ -9,12 +9,11 @@
 
 .btn-my-edit, input[type="submit"] {
     margin: 0.5em 1em 0.5em 0em;
-    width: 10em;
+    width: 5em;
     background-color: #0AB239;
     border: 1px solid #CC7F14;
     color: #fff;
-    padding: 0.5em;
-    font-size: 1.50em;
+    font-size: 1.25em;
 }
 
 .btn-my-edit:hover, input[type="submit"]:hover {
@@ -29,8 +28,30 @@
     margin-top: 1em;
 }
 
+.display-4-my-edit {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
 
 /* SPLASH PAGE */
+.home-btn{
+    margin: 0.5em 1em 0.5em 0em;
+    width: 7em;
+    background-color: #0AB239;
+    border: 1px solid #CC7F14;
+    color: #fff;
+    padding: 0.5em;
+    font-size: 1.50em;
+}
+
+.home-btn:hover {
+    background-color: #41FF77;
+    border: 1px solid #CC7F14;
+    color: #fff;
+}
+
 #splash-page-container {
     background: #F5F5F5;
     height: 100vh;
@@ -82,7 +103,7 @@ form > label {
 }
 
 .dropdown {
-    margin: 2em 0em;
+    margin: 1em 0 0.75em 0;
 }
 
 /* TRANSACTIONS/OUTLAYS/INFLOWS*/
@@ -94,7 +115,7 @@ fieldset {
 
 fieldset legend {
     padding: 5px 10px;
-    font-size: 2em;
+    font-size: 1.5em;
     border-radius: 5px;
     margin-left: 20px;
     margin-bottom: 0;

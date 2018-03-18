@@ -175,17 +175,11 @@ namespace LaymanFinance.Controllers
             transaction.ApplicationUser = await _context.Users.FindAsync(userId);
             transaction.Category = await _context.Category.FirstAsync(x => x.Name == model.SelectedCategory);
             transaction.IsOutlay = true;
-            _context.Transaction.Add(transaction);
-            _context.SaveChanges();
+            await _context.Transaction.AddAsync(transaction);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
 
         // GET: Transactions/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -200,8 +194,8 @@ namespace LaymanFinance.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", transaction.UserId);
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", transaction.CategoryId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUser, "Id", "Id", transaction.UserId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", transaction.Category);
             return View(transaction);
         }
 
@@ -237,10 +231,24 @@ namespace LaymanFinance.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", transaction.UserId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUser, "Id", "Id", transaction.UserId);
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", transaction.CategoryId);
             return View(transaction);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Transactions/Delete/5
         public async Task<IActionResult> Delete(int? id)

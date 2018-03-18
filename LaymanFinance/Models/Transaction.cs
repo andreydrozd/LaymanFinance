@@ -10,7 +10,7 @@ namespace LaymanFinance.Models
         public int CategoryId { get; set; }
         public string UserId { get; set; }
 
-        [Required(ErrorMessage = "When was the transactoin?")]
+        [Required(ErrorMessage = "When was the transaction?")]
         public DateTime DateOccurred { get; set; }
         public DateTime DateEntered { get; set; }
         public DateTime? DateModified { get; set; }
