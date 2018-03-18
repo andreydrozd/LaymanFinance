@@ -21,12 +21,12 @@ namespace LaymanFinance.Controllers
         // GET: Transactions returned based on time period selected. Returns number is HC at the "count" variable.
         public async Task<IActionResult> Index(int? month, int? year, int count = 5)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             month = month ?? DateTime.Now.Month;
             year = year ?? DateTime.Now.Year;
             ViewData["Year"] = year.ToString();
             ViewData["Month"] = new DateTime(year.Value, month.Value, 1).ToString("MMM");
-
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             // Date filters for the list of transactions and charts
             DateTime startPeriod = new DateTime(year.Value, month.Value, 1);

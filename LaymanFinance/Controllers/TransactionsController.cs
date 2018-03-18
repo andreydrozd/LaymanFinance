@@ -49,29 +49,17 @@ namespace LaymanFinance.Controllers
             // Filter functionality
             if (!string.IsNullOrEmpty(category))
             {
-                transactions.Transactions = (await _context.Users.Include(x => x.Transaction).ThenInclude(x => x.Category).FirstAsync(x => x.Id == userId)).Transaction.Where(x => x.Category.Name == category).ToList();
+                transactions.Transactions = (await _context.Users
+                    .Include(x => x.Transaction)
+                    .ThenInclude(x => x.Category)
+                    .FirstAsync(x => x.Id == userId))
+                    .Transaction
+                    .Where(x => x.Category.Name == category)
+                    .ToList();
             }
 
             return View(transactions);
         }
-
-        //// This controller returns transactions in a certain date range.
-        //public async Task<IActionResult> Index()
-        //{
-        //    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //    DateTime startPeriod = new DateTime(2018, 10, 1);
-        //    DateTime endPeriod = new DateTime(2018, 11, 15);
-        //    TransactionViewModel model = new TransactionViewModel
-        //    {
-        //        Transactions = (await _context.Users
-        //            .Include(x => x.Transaction)
-        //            .ThenInclude(x => x.Category)
-        //            .FirstAsync(x => x.Id == userId))
-        //            .Transaction.Where(x => x.DateOccurred > startPeriod && x.DateOccurred < endPeriod).ToList(),
-        //    };
-
-        //    return View(model);
-        //}
 
         // GET: Transactions/Outlays
         public async Task<IActionResult> Outlays(string sort)
@@ -241,15 +229,6 @@ namespace LaymanFinance.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
         // GET: Transactions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -259,8 +238,8 @@ namespace LaymanFinance.Controllers
             }
 
             var transaction = await _context.Transaction
-                .Include(t => t.ApplicationUser)
-                .Include(t => t.Category)
+                //.Include(t => t.ApplicationUser)
+                //.Include(t => t.Category)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (transaction == null)
             {
