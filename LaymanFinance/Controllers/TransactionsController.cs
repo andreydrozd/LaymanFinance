@@ -62,7 +62,7 @@ namespace LaymanFinance.Controllers
         }
 
         // GET: Transactions/Outlays
-        public async Task<IActionResult> Outlays(string sort)
+        public async Task<IActionResult> Outlays(string sort, string category)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             TransactionViewModel outlays = new TransactionViewModel
@@ -75,6 +75,7 @@ namespace LaymanFinance.Controllers
             {
                 outlays.Transactions = outlays.Transactions.OrderByDescending(x => x.DateOccurred).ToArray();
             }
+
             if (!string.IsNullOrEmpty(sort))
             {
                 if (sort == "source")
@@ -86,11 +87,29 @@ namespace LaymanFinance.Controllers
                     outlays.Transactions = outlays.Transactions.OrderBy(x => x.Amount).ToArray();
                 }
             }
+
+            // Filter functionality
+            if (!string.IsNullOrEmpty(category))
+            {
+                outlays.Transactions = (await _context.Users
+                    .Include(x => x.Transaction)
+                    .ThenInclude(x => x.Category)
+                    .FirstAsync(x => x.Id == userId))
+                    .Transaction
+                    .Where(x => x.Category.Name == category)
+                    .ToList();
+            }
+
             return View(outlays);
         }
 
+       
+
+
+
+
         // GET: Transactions/Inflows
-        public async Task<IActionResult> Inflows(string sort)
+        public async Task<IActionResult> Inflows(string sort, string category)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             TransactionViewModel inflows = new TransactionViewModel
@@ -114,6 +133,19 @@ namespace LaymanFinance.Controllers
                     inflows.Transactions = inflows.Transactions.OrderBy(x => x.Amount).ToArray();
                 }
             }
+
+            // Filter functionality
+            if (!string.IsNullOrEmpty(category))
+            {
+                inflows.Transactions = (await _context.Users
+                    .Include(x => x.Transaction)
+                    .ThenInclude(x => x.Category)
+                    .FirstAsync(x => x.Id == userId))
+                    .Transaction
+                    .Where(x => x.Category.Name == category)
+                    .ToList();
+            }
+
             return View(inflows);
         }
 
