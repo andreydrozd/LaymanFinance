@@ -34,7 +34,6 @@
     line-height: 1.2;
 }
 
-
 /* SPLASH PAGE */
 .home-btn{
     margin: 0.5em 1em 0.5em 0em;
@@ -83,23 +82,58 @@
     box-shadow: 0 0 2em 0 rgba(0,0,0,0.25);
 }
 
-form > input {
-    display: block;
+.form-signin {
     width: 100%;
-    font-size: 1.50em;
+    max-width: 420px;
+    padding-top: 10%;
+    padding: 15px;
+    margin: 0 auto;
 }
 
-form > label {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 0.5em;
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.account-related-btns > button {
+    background-color: #0AB239;
+    border: 1px solid #CC7F14;
+}
+
+.account-related-btns > button:hover {
+    background-color: #41FF77;
 }
 
 /* DASHBOARD */
 .chart-container {
     position: relative;
     height: 40vh;
-    width: 50vw
+    width: 80vw;
+    display: flex;
+    align-content: center;
 }
 
 .dropdown {
@@ -150,9 +184,9 @@ fieldset legend {
     z-index: 100;
     padding-left: 1em;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-    /*Do I need all this?*/
     position: sticky;
-    height: 100vh;
+    /*Vh over 100 because pie charts make the page scroll.*/
+    height: 120vh;
     padding-top: .5rem;
     overflow-x: hidden;
     overflow-y: auto;

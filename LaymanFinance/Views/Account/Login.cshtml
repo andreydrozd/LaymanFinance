@@ -9,18 +9,29 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div asp-validation-summary="All"></div>
     <div id="user-form">
-        <form asp-action="login" asp-controller="account" method="post">
-            <label>Username</label>
-            <input type="text" name="username" required />
-            <label>Password</label>
-            <input type="password" name="password" required />
+        <h2 class="font-weight-normal text-center">Sign in</h2>
+        <form asp-action="login" asp-controller="account" method="post" class="form-signin">
+            <div class="form-label-group">
+                <input type="email" name="username" class="form-control" placeholder="Email address" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
             <div class="account-related-btns">
-                <input type="submit" value="Login" class="btn" />
+                <button class="btn btn-lg btn-block" type="submit">Login</button>
+            </div>
+            <div class="mt-2">
+                <a asp-action="ForgotPassword">Forgot Password?</a>
             </div>
         </form>
-        <a asp-action="ForgotPassword">Forgot Password?</a>
+        <div asp-validation-summary="All"></div>
     </div>
 </body>
 </html>
+
+
+
+
+
+

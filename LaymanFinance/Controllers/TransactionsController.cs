@@ -73,7 +73,7 @@ namespace LaymanFinance.Controllers
 
             if (string.IsNullOrEmpty(sort))
             {
-                outlays.Transactions = outlays.Transactions.OrderBy(x => x.DateOccurred).ToArray();
+                outlays.Transactions = outlays.Transactions.OrderByDescending(x => x.DateOccurred).ToArray();
             }
             if (!string.IsNullOrEmpty(sort))
             {
@@ -101,7 +101,7 @@ namespace LaymanFinance.Controllers
 
             if (string.IsNullOrEmpty(sort))
             {
-                inflows.Transactions = inflows.Transactions.OrderBy(x => x.DateOccurred).ToArray();
+                inflows.Transactions = inflows.Transactions.OrderByDescending(x => x.DateOccurred).ToArray();
             }
             if (!string.IsNullOrEmpty(sort))
             {
@@ -223,6 +223,9 @@ namespace LaymanFinance.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", transaction.CategoryId);
             return View(transaction);
         }
+
+
+
 
 
 
