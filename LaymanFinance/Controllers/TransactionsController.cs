@@ -224,14 +224,6 @@ namespace LaymanFinance.Controllers
             return View(transaction);
         }
 
-
-
-
-
-
-
-
-
         // GET: Transactions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

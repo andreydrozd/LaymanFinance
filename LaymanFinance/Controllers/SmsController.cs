@@ -47,7 +47,7 @@ namespace LaymanFinance.Controllers
 
             if (userCategory != null)
             {
-                response.Message("You have " +remainingAmount.ToString("c")+ " budgeted amount for " + userCategory.Category.Name + " is.");
+                response.Message("You have " +remainingAmount.ToString("c")+ " remaining in the budget category of " + userCategory.Category.Name);
             }
             else
             {

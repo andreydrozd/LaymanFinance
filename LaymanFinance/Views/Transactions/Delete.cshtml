@@ -4,78 +4,25 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Transaction</h4>
+<div class="col-md-7">
+    <h2>Are you sure you want to delete this transaction?</h2>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOccurred)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DateOccurred)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DateEntered)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DateEntered)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DateModified)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DateModified)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Source)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Source)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Memo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Memo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsInflow)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsInflow)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsOutlay)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsOutlay)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Category.Id)
-        </dd>
-    </dl>
+
+    <h4>Date Occurred</h4>
+    <p>@Model.DateOccurred.ToShortDateString()</p>
     
+    <h4>Amount</h4>
+    <p>@Model.Amount.ToString("c")</p>
+
+    <h4>Source</h4>
+    <p>@Model.Source</p>
+
+    <h4>Memo</h4>
+    <p>@Model.Memo</p>
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-my-edt" />
+        <a asp-action="Index" class="btn btn-my-edit">Cancel</a>
     </form>
 </div>
